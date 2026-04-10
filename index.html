@@ -2673,8 +2673,10 @@
     }
     const auth = firebase.auth();
     const db = firebase.firestore();
+    auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(() => {});
 
     function uiSignedIn(user) {
+      if (!user) return;
       signInBtn.hidden = true;
       pushBtn.hidden = false;
       pullBtn.hidden = false;
@@ -2690,9 +2692,17 @@
       statusEl.textContent = 'Not signed in — same Google account on phone & PC.';
     }
 
-    signInBtn.addEventListener('click', () => {
+    signInBtn.addEventListener('click', async () => {
       const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithRedirect(provider);
+      try {
+        await auth.signInWithPopup(provider);
+      } catch (e) {
+        if (e && e.code === 'auth/popup-blocked') {
+          auth.signInWithRedirect(provider);
+        } else if (e && e.code !== 'auth/popup-closed-by-user' && e.code !== 'auth/cancelled-popup-request') {
+          alert(e.message || e.code || 'Sign-in failed');
+        }
+      }
     });
     outBtn.addEventListener('click', () => auth.signOut());
 
@@ -2754,14 +2764,23 @@
       pullBtn.disabled = false;
     });
 
-    auth.getRedirectResult().catch(e => {
-      console.warn(e);
-      statusEl.textContent = 'Sign-in error: ' + (e.message || e.code || 'unknown');
-    });
-    auth.onAuthStateChanged(user => {
-      if (user) uiSignedIn(user);
-      else uiSignedOut();
-    });
+    (async function finishRedirectAndListen() {
+      statusEl.textContent = 'Checking sign-in…';
+      try {
+        const cred = await auth.getRedirectResult();
+        if (cred && cred.user) uiSignedIn(cred.user);
+      } catch (e) {
+        const ok = ['auth/no-auth-event', 'auth/missing-or-invalid-nonce'];
+        if (e && e.code && !ok.includes(e.code)) {
+          console.warn(e);
+          statusEl.textContent = 'Sign-in error: ' + (e.message || e.code || 'unknown');
+        }
+      }
+      auth.onAuthStateChanged(user => {
+        if (user) uiSignedIn(user);
+        else uiSignedOut();
+      });
+    })();
   }
   function initSyncBackup() {
     const btn = document.getElementById('import-backup-btn');
