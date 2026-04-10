@@ -1,0 +1,3305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJ · A-Level Revision Plan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8e4dc;
+    --muted: #7a7570;
+    --maths: #c8a96e;
+    --maths-bg: rgba(200,169,110,0.08);
+    --maths-border: rgba(200,169,110,0.2);
+    --physics: #6eb8c8;
+    --physics-bg: rgba(110,184,200,0.08);
+    --physics-border: rgba(110,184,200,0.2);
+    --econ: #9ec86e;
+    --econ-bg: rgba(158,200,110,0.08);
+    --econ-border: rgba(158,200,110,0.2);
+    --p1: #c8a96e;
+    --p2: #6eb8c8;
+    --p3: #c86e8a;
+    --p4: #9ec86e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--maths);
+  }
+  .header-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 6px; }
+  .header-action-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+  .firebase-sync-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .firebase-sync-bar .tracker-btn { font-size: 11px; padding: 5px 10px; }
+  .firebase-sync-status { flex: 1 1 140px; min-width: 0; line-height: 1.4; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .nav-btn:hover { color: var(--text); }
+  .nav-btn.active { color: var(--text); border-bottom-color: var(--text); font-weight: 500; }
+  .nav-btn[data-tab="maths"].active { border-bottom-color: var(--maths); color: var(--maths); }
+  .nav-btn[data-tab="physics"].active { border-bottom-color: var(--physics); color: var(--physics); }
+  .nav-btn[data-tab="econ"].active { border-bottom-color: var(--econ); color: var(--econ); }
+
+  /* ── PAGE CENTERING ── */
+  .page-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  header { border-bottom: 1px solid var(--border); padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; }
+  header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%); pointer-events: none; }
+  nav { border-bottom: 1px solid var(--border); }
+
+  /* ── COUNTDOWN ── */
+  .countdown {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    text-align: right;
+  }
+  .countdown-days {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--maths);
+  }
+  .countdown-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .countdown-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── MAIN ── */
+  main { padding: 2rem; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ── PHASE HEADER ── */
+  .phase-block { margin-bottom: 2.5rem; }
+  .phase-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .phase-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .phase-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .phase-dates {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .phase-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    padding-left: 2px;
+  }
+
+  /* ── WEEK GRID ── */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+  }
+  .week-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    transition: border-color 0.2s;
+  }
+  .week-card:hover { border-color: var(--border2); }
+  .week-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .week-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .topic-item {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s;
+    min-height: 28px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .topic-item:hover { color: var(--text); }
+  .topic-item input[type="checkbox"] { display: none; }
+  .tick {
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .tick svg { display: none; width: 9px; height: 9px; }
+  .topic-item.done { color: var(--muted); opacity: 0.5; }
+  .topic-item.done .tick {
+    background: var(--muted);
+    border-color: var(--muted);
+  }
+  .topic-item.done .tick svg { display: block; }
+  .topic-item.done .tick-label { text-decoration: line-through; }
+
+  /* progress bar */
+  .card-progress {
+    margin-top: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .progress-track {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 2px;
+    background: var(--muted);
+    transition: width 0.3s ease;
+  }
+  .progress-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    min-width: 28px;
+    text-align: right;
+  }
+  .card-maths .progress-fill { background: var(--maths); }
+  .card-physics .progress-fill { background: var(--physics); }
+  .card-econ .progress-fill { background: var(--econ); }
+
+  /* overall progress bar in header */
+  .global-progress {
+    margin-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .global-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 160px;
+  }
+  .global-bar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .global-track {
+    flex: 1;
+    height: 2px;
+    background: var(--border2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .global-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .gf-maths { background: var(--maths); }
+  .gf-physics { background: var(--physics); }
+  .gf-econ { background: var(--econ); }
+  .global-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    min-width: 28px;
+  }
+
+  /* subject accent borders */
+  .card-maths { border-left: 2px solid var(--maths-border); }
+  .card-maths:hover { border-left-color: var(--maths); }
+  .card-physics { border-left: 2px solid var(--physics-border); }
+  .card-physics:hover { border-left-color: var(--physics); }
+  .card-econ { border-left: 2px solid var(--econ-border); }
+  .card-econ:hover { border-left-color: var(--econ); }
+
+  /* ── OVERVIEW GRID ── */
+  .overview-phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+  .overview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px;
+  }
+  .overview-card .oc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .overview-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .overview-card p { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+  .info-box {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 4px;
+    padding: 18px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-top: 1.5rem;
+  }
+  .info-box strong { color: var(--text); font-weight: 500; }
+
+  /* ── SCHEDULE ── */
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+  }
+  .schedule-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+  }
+  .schedule-day {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .schedule-sessions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .session-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+  }
+  .session-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .session-info { color: var(--muted); font-size: 12px; }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 18px;
+    flex: 1;
+    min-width: 120px;
+  }
+  .stat-val {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); }
+
+  /* phase colours */
+  .c-p1 { color: var(--p1); }
+  .c-p2 { color: var(--p2); }
+  .c-p3 { color: var(--p3); }
+  .c-p4 { color: var(--p4); }
+  .bg-p1 { background: rgba(200,169,110,0.1); color: var(--p1); }
+  .bg-p2 { background: rgba(110,184,200,0.1); color: var(--p2); }
+  .bg-p3 { background: rgba(200,110,138,0.1); color: var(--p3); }
+  .bg-p4 { background: rgba(158,200,110,0.1); color: var(--p4); }
+
+  /* ── METHOD BOX ── */
+  .method-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+  .method-box-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: var(--border2);
+  }
+  .method-step {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .method-step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--border2);
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ── PLC ── */
+  .plc-subject { margin-bottom: 2.5rem; }
+  .plc-subject-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .plc-subject-title {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .plc-summary {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+  }
+  .plc-count { display: flex; align-items: center; gap: 4px; }
+  .plc-count-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  .plc-group { margin-bottom: 1.25rem; }
+  .plc-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    padding-left: 2px;
+  }
+  .plc-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: border-color 0.15s;
+  }
+  .plc-row:hover { border-color: var(--border2); }
+  .plc-topic-cell {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .plc-topic-name {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .plc-row-meta {
+    font-size: 10.5px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    line-height: 1.45;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+  }
+  .plc-row-meta .plc-meta-line { opacity: 0.92; }
+  .plc-meta-due { color: var(--p3); }
+  .plc-meta-due.overdue { color: #c86e6e; }
+  .plc-meta-due.soon { color: #c8a030; }
+  .plc-spaced-btn {
+    padding: 2px 7px;
+    border-radius: 2px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .plc-spaced-btn:hover { color: var(--text); border-color: var(--text); }
+  .plc-search-filter-cluster {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    flex: 1 1 320px;
+    min-width: min(100%, 200px);
+  }
+  .plc-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 200px;
+    min-width: 140px;
+    max-width: 360px;
+  }
+  .plc-search-wrap input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 6px 10px;
+    font-size: 12px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+  }
+  .plc-search-wrap input::placeholder { color: var(--muted); }
+  .paper-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .paper-form-grid input,
+  .paper-form-grid select {
+    width: 100%;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 12px;
+  }
+  .paper-checklist {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .paper-checklist input {
+    width: 100%;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 12px;
+  }
+  .paper-log-list { margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }
+  .paper-log-item {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .paper-log-item:last-child { border-bottom: none; }
+  .paper-log-main { flex: 1; min-width: 0; }
+  .paper-log-check { font-size: 11px; opacity: 0.9; margin-top: 6px; line-height: 1.45; }
+  .paper-log-del { flex-shrink: 0; }
+  .rag-btns {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .rag-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 3px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    cursor: pointer;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    color: var(--muted);
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .rag-btn:hover { border-color: var(--text); color: var(--text); }
+  .rag-btn.active-r { background: #7a2020; border-color: #c86e6e; color: #f5c0c0; }
+  .rag-btn.active-a { background: #6b4a10; border-color: #c8a030; color: #fad88a; }
+  .rag-btn.active-g { background: #1a4a1a; border-color: #4a9e4a; color: #a0e0a0; }
+  .plc-row.rag-r { border-left: 2px solid #c86e6e; }
+  .plc-row.rag-a { border-left: 2px solid #c8a030; }
+  .plc-row.rag-g { border-left: 2px solid #4a9e4a; }
+
+  .plc-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    align-items: center;
+  }
+  .plc-action-btn {
+    padding: 7px 14px;
+    border-radius: 3px;
+    border: 1px solid var(--border2);
+    background: transparent;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .plc-action-btn:hover { background: var(--surface2); }
+  .plc-action-btn.primary { background: var(--surface2); border-color: var(--border2); }
+  .copy-confirm {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #4a9e4a;
+    display: none;
+  }
+  .copy-confirm.show { display: inline; }
+
+  .plc-filter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    cursor: pointer;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .filter-btn:hover { color: var(--text); border-color: var(--border2); }
+  .filter-btn.active { color: var(--text); border-color: var(--border2); background: var(--surface); }
+  .section:not(#plc):not(#overview):not(#maths):not(#physics):not(#econ):not(#papers) .plc-actions,
+  .section:not(#plc):not(#overview):not(#maths):not(#physics):not(#econ):not(#papers) .plc-subject,
+  .section:not(#plc):not(#overview):not(#maths):not(#physics):not(#econ):not(#papers) .plc-group,
+  .section:not(#plc):not(#overview):not(#maths):not(#physics):not(#econ):not(#papers) .plc-row,
+  .section:not(#plc):not(#overview):not(#maths):not(#physics):not(#econ):not(#papers) .rag-btns {
+    display: none !important;
+  }
+  .subject-plc {
+    margin: 0 0 1.25rem;
+  }
+  .subject-plc .plc-subject-header { border-bottom: 1px solid var(--border); }
+  .subject-plc .plc-summary { display: none; }
+  .subject-plc-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .plc-row { padding: 10px 10px; align-items: flex-start; }
+    .rag-btn { width: 32px; height: 32px; font-size: 11px; }
+    .plc-topic-name { font-size: 13px; }
+    .plc-summary { display: none; }
+  }
+  @media (max-width: 900px) {
+    header { padding: 1.25rem 1rem 1rem; }
+    main { padding: 1rem; }
+
+    h1 { font-size: 1.75rem; }
+
+    /* header meta — hide the subject labels on very small screens, keep counts */
+    .header-meta { gap: 0.75rem; font-size: 11px; }
+    .header-action-group { width: 100%; justify-content: flex-start; }
+
+    /* global progress bars stack vertically */
+    .global-progress { flex-direction: column; gap: 6px; margin-top: 1rem; }
+    .global-bar-wrap { min-width: unset; width: 100%; }
+
+    /* nav: slightly smaller tap targets but still comfortable */
+    .nav-btn { padding: 0.85rem 1rem; font-size: 12px; }
+
+    /* week cards: single column, slightly more padding for touch */
+    .week-grid { grid-template-columns: 1fr; }
+    .week-card { padding: 14px; }
+
+    /* bigger tick tap targets on mobile */
+    .topic-item {
+      padding: 5px 0;
+      gap: 10px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+    .tick {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .tick svg { width: 12px; height: 12px; }
+
+    /* progress bar slightly taller for visibility */
+    .progress-track { height: 4px; }
+
+    .paper-form-grid { grid-template-columns: 1fr; }
+
+    /* overview grid: single column */
+    .overview-phases { grid-template-columns: 1fr; }
+
+    /* stats row: 2x2 grid */
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* schedule: single column */
+    .schedule-grid { grid-template-columns: 1fr; }
+
+    /* method box text slightly bigger for readability */
+    .method-box { font-size: 13px; padding: 12px; }
+    .method-step { gap: 8px; margin-bottom: 8px; }
+
+    /* phase label: wrap dates below */
+    .phase-label { flex-wrap: wrap; }
+    .phase-dates { margin-left: 0; width: 100%; margin-top: 2px; }
+
+    footer { padding: 1rem; font-size: 10px; flex-direction: column; gap: 4px; }
+    .countdown { top: 1rem; right: 1rem; }
+    .countdown-days { font-size: 1.5rem; }
+  }
+  /* ── RESOURCES ── */
+  .resource-link {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .resource-link:hover { border-color: var(--border2); background: var(--surface2); }
+  .resource-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .resource-link:hover .resource-title { color: var(--maths); }
+  .resource-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  #resources {
+    position: relative;
+    z-index: 5;
+    scroll-margin-top: 0;
+  }
+  .resources-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .resources-inner > div {
+    width: 100%;
+    max-width: 640px;
+  }
+  .resources-inner .phase-label {
+    justify-content: center;
+  }
+  .tracker-btn {
+    margin-left: auto;
+    border: 1px solid var(--border2);
+    background: var(--surface2);
+    color: var(--text);
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .tracker-btn:hover { border-color: var(--text); }
+  .tracker-wrap { margin: 1.5rem 0 1.25rem; }
+  .tracker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+  }
+  .tracker-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px;
+  }
+  .tracker-title {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .tracker-metric {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .tracker-priority {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+  .tracker-priority ul { list-style: none; }
+  .tracker-priority li {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 5px;
+  }
+  .attempt-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.68);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    padding: 16px;
+  }
+  .attempt-modal.open { display: flex; }
+  .attempt-panel {
+    width: min(760px, 100%);
+    max-height: 90vh;
+    overflow: auto;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 14px;
+  }
+  .attempt-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .attempt-row input, .attempt-row select {
+    width: 100%;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 12px;
+  }
+  .attempt-actions { display: flex; gap: 8px; margin-top: 8px; }
+  .attempt-log-list { margin-top: 12px; border-top: 1px solid var(--border); padding-top: 10px; }
+  .attempt-log-item {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    line-height: 1.45;
+  }
+  .attempt-log-item-text { flex: 1; min-width: 0; }
+  .attempt-log-del {
+    flex-shrink: 0;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 2px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    line-height: 1.3;
+  }
+  .attempt-log-del:hover {
+    color: #c86e6e;
+    border-color: #c86e6e;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+<header>
+  <div class="countdown">
+    <div style="display:flex;align-items:flex-start;gap:14px;justify-content:flex-end">
+      <div style="text-align:center">
+        <div class="countdown-days" id="cd-weeks-num">—</div>
+        <div class="countdown-label">weeks</div>
+      </div>
+      <div style="color:var(--muted);font-family:'Instrument Serif',serif;font-size:1.8rem;line-height:1;padding-top:2px">·</div>
+      <div style="text-align:center">
+        <div class="countdown-days" id="cd-days-num">—</div>
+        <div class="countdown-label">days</div>
+      </div>
+    </div>
+    <div class="countdown-sub" style="margin-top:4px">until 21 Jun 2026</div>
+  </div>
+  <div class="header-label">Edexcel A-Level · 2025–26</div>
+  <h1>Revision Plan<br><em>Apr 13 → Jun 21</em></h1>
+  <div class="header-meta">
+    <span><span class="dot" style="background:var(--maths)"></span> Mathematics</span>
+    <span><span class="dot" style="background:var(--physics)"></span> Physics</span>
+    <span><span class="dot" style="background:var(--econ)"></span> Economics</span>
+    <span>10 weeks · 19 hrs/week</span>
+    <div class="header-action-group">
+      <button class="tracker-btn" type="button" onclick="openPaperLogTab()" title="Open the Paper log tab">Log paper</button>
+      <button class="tracker-btn" type="button" onclick="openAttemptModal()" title="Log a topic attempt">Log attempt</button>
+      <button class="tracker-btn" type="button" onclick="exportRevisionData()" title="Download a JSON file with ticks, PLC ratings, and attempts — copy to your other device">Export</button>
+      <button class="tracker-btn" type="button" id="import-backup-btn" title="Restore from a file you exported on another device">Import</button>
+      <input type="file" id="import-backup-input" accept=".json,application/json" style="display:none" tabindex="-1" aria-hidden="true">
+    </div>
+    <div class="firebase-sync-bar" id="firebase-sync-bar">
+      <span class="firebase-sync-status" id="firebase-sync-status">Cloud sync: loading…</span>
+      <button type="button" class="tracker-btn" id="firebase-sign-in" hidden>Sign in with Google</button>
+      <button type="button" class="tracker-btn" id="firebase-push" hidden>Push to cloud</button>
+      <button type="button" class="tracker-btn" id="firebase-pull" hidden>Pull from cloud</button>
+      <button type="button" class="tracker-btn" id="firebase-sign-out" hidden>Sign out</button>
+    </div>
+  </div>
+  <div class="global-progress">
+    <div class="global-bar-wrap">
+      <span class="global-bar-label">Maths</span>
+      <div class="global-track"><div class="global-fill gf-maths" id="gp-maths" style="width:0%"></div></div>
+      <span class="global-pct" id="gp-maths-pct">0%</span>
+    </div>
+    <div class="global-bar-wrap">
+      <span class="global-bar-label">Physics</span>
+      <div class="global-track"><div class="global-fill gf-physics" id="gp-physics" style="width:0%"></div></div>
+      <span class="global-pct" id="gp-physics-pct">0%</span>
+    </div>
+    <div class="global-bar-wrap">
+      <span class="global-bar-label">Economics</span>
+      <div class="global-track"><div class="global-fill gf-econ" id="gp-econ" style="width:0%"></div></div>
+      <span class="global-pct" id="gp-econ-pct">0%</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <button class="nav-btn active" data-tab="overview" onclick="show('overview',this)">Overview</button>
+  <button class="nav-btn" data-tab="maths" onclick="show('maths',this)">Maths</button>
+  <button class="nav-btn" data-tab="physics" onclick="show('physics',this)">Physics</button>
+  <button class="nav-btn" data-tab="econ" onclick="show('econ',this)">Economics</button>
+  <button class="nav-btn" data-tab="schedule" onclick="show('schedule',this)">Schedule</button>
+  <button class="nav-btn" data-tab="plc" onclick="show('plc',this)">PLC</button>
+  <button class="nav-btn" data-tab="papers" onclick="show('papers',this)">Paper log</button>
+  <button class="nav-btn" data-tab="resources" onclick="show('resources',this)">Resources</button>
+
+</nav>
+
+<main>
+
+  <!-- ══ OVERVIEW ══ -->
+  <div class="section active" id="overview">
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-val c-p1">10</div><div class="stat-label">weeks total</div></div>
+      <div class="stat-card"><div class="stat-val c-p2">19</div><div class="stat-label">hrs/week</div></div>
+      <div class="stat-card"><div class="stat-val c-p3">7·6·6</div><div class="stat-label">phys · maths · econ</div></div>
+      <div class="stat-card"><div class="stat-val c-p4">190</div><div class="stat-label">hrs total</div></div>
+    </div>
+
+    <div class="tracker-wrap">
+      <div class="phase-label" style="margin-bottom:0.75rem">
+        <span class="phase-tag" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border2)">Progress Tracker</span>
+      </div>
+      <div class="tracker-grid">
+        <div class="tracker-card">
+          <div class="tracker-title" style="color:var(--maths)">Mathematics</div>
+          <div class="tracker-metric"><span>Completion</span><strong id="trk-maths-completion">0%</strong></div>
+          <div class="tracker-metric"><span>Avg timed score</span><strong id="trk-maths-score">No data</strong></div>
+          <div class="tracker-metric"><span>Hours (7 days)</span><strong id="trk-maths-hours">0.0h</strong></div>
+          <div class="tracker-priority"><ul id="trk-maths-weak"></ul></div>
+        </div>
+        <div class="tracker-card">
+          <div class="tracker-title" style="color:var(--physics)">Physics</div>
+          <div class="tracker-metric"><span>Completion</span><strong id="trk-physics-completion">0%</strong></div>
+          <div class="tracker-metric"><span>Avg timed score</span><strong id="trk-physics-score">No data</strong></div>
+          <div class="tracker-metric"><span>Hours (7 days)</span><strong id="trk-physics-hours">0.0h</strong></div>
+          <div class="tracker-priority"><ul id="trk-physics-weak"></ul></div>
+        </div>
+        <div class="tracker-card">
+          <div class="tracker-title" style="color:var(--econ)">Economics</div>
+          <div class="tracker-metric"><span>Completion</span><strong id="trk-econ-completion">0%</strong></div>
+          <div class="tracker-metric"><span>Avg timed score</span><strong id="trk-econ-score">No data</strong></div>
+          <div class="tracker-metric"><span>Hours (7 days)</span><strong id="trk-econ-hours">0.0h</strong></div>
+          <div class="tracker-priority"><ul id="trk-econ-weak"></ul></div>
+        </div>
+      </div>
+      <div class="info-box" style="margin-top:10px">
+        <strong>Next priorities</strong>
+        <ul id="tracker-priority-list" style="margin-top:8px; list-style:none;"></ul>
+      </div>
+    </div>
+
+    <div class="overview-phases">
+      <div class="overview-card">
+        <div class="oc-label c-p1">Phase 1 · Wks 1–4</div>
+        <h3>Content</h3>
+        <p>13 Apr – 10 May. Cover all remaining topic content. No past papers yet — understand first, practise second.</p>
+      </div>
+      <div class="overview-card">
+        <div class="oc-label c-p2">Phase 2 · Wks 5–6</div>
+        <h3>Consolidation</h3>
+        <p>11 May – 24 May. Topic-by-topic practice questions. Identify remaining gaps. Begin timed question sets.</p>
+      </div>
+      <div class="overview-card">
+        <div class="oc-label c-p3">Phase 3 · Wks 7–9</div>
+        <h3>Past papers</h3>
+        <p>25 May – 14 Jun. Full past papers under timed conditions. Mark every paper. Analyse error patterns.</p>
+      </div>
+      <div class="overview-card">
+        <div class="oc-label c-p4">Phase 4 · Wk 10</div>
+        <h3>Final push</h3>
+        <p>15–21 Jun. Formula sheets, mark-scheme language, top weak areas only. Nothing new.</p>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>Honest take:</strong> 19 hrs/week is workable but tight for C→B. The plan only works if you're genuinely focused in those sessions. Your 9–11 pm peak is an asset — protect it for hard thinking, not passive re-reading.<br><br>
+      <strong>Biggest risks:</strong> Maths: harmonic form and differential equations lose most marks — hit these week 1–2. Physics: further mechanics and fields are calculation-heavy and often under-revised — hence they're front-loaded here. Economics: KAA essay structure needs to be automatic by week 5.<br><br>
+      <strong>Non-negotiable from week 7:</strong> Past papers. Content alone will not shift your grade.<br><br>
+      <strong>Tracking on this page:</strong> <strong>Paper log</strong> — log each paper with the post-paper checklist (mistake / redo / eval phrase). <strong>PLC</strong> — search bar filters topics; each row shows your <strong>last logged attempt</strong> for that topic and lets you set <strong>review dates</strong> (+3d / +7d / +14d) or use the <strong>Review queue</strong> filter for what’s due soon. <strong>Log attempt</strong> (header) ties scores to PLC topics.
+    </div>
+  </div>
+
+  <!-- ══ MATHS ══ -->
+  <div class="section" id="maths">
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p1">Phase 1</span>
+        <span class="phase-title">Content</span>
+        <span class="phase-dates">13 Apr – 10 May</span>
+      </div>
+      <p class="phase-desc">Cover all topics in order — algebraic fractions and first principles first as they underpin everything else.</p>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 1 · Maths</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Read the textbook worked example</strong> — don't just skim it, follow every line and ask yourself why each step was done.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">Close the book and redo the example from scratch.</strong> If you get stuck, look at one line only, then continue. This is the single most effective thing you can do.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">Do 3–5 exercise questions per sub-topic</strong> — enough to check you can do it, not so many you're grinding.</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span><strong style="color:var(--text);font-weight:500;">Write down anything you got wrong</strong> and the correct method. Don't move on until you understand why.</span></div>
+        <div class="method-step"><span class="method-step-num">05</span><span>No formula sheets during content phase — if you need to look something up, that's a signal to memorise it now.</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-maths" data-subject="maths">
+          <div class="week-num">Week 1 · 13–19 Apr</div>
+          <h3>Algebraic fractions + First principles</h3>
+          <div class="topic-item">Algebraic fractions: adding, subtracting, simplifying</div>
+          <div class="topic-item">Partial fractions (denominator types)</div>
+          <div class="topic-item">First principles definition of derivative</div>
+          <div class="topic-item">Differentiating polynomials and trig from scratch</div>
+        </div>
+        <div class="week-card card-maths" data-subject="maths">
+          <div class="week-num">Week 2 · 20–26 Apr</div>
+          <h3>Trigonometry 3 + Harmonic form (P8)</h3>
+          <div class="topic-item">Reciprocal trig functions, inverse trig</div>
+          <div class="topic-item">Double and compound angle formulae</div>
+          <div class="topic-item">R sin(x + α) harmonic form method</div>
+          <div class="topic-item">Solving equations using harmonic form</div>
+        </div>
+        <div class="week-card card-maths" data-subject="maths">
+          <div class="week-num">Week 3 · 27 Apr – 3 May</div>
+          <h3>Circles (P10) + Differential equations</h3>
+          <div class="topic-item">Circle–line intersection problems</div>
+          <div class="topic-item">Tangents and normals to circles</div>
+          <div class="topic-item">Forming and solving DEs (separation of variables)</div>
+          <div class="topic-item">General and particular solutions</div>
+        </div>
+        <div class="week-card card-maths" data-subject="maths">
+          <div class="week-num">Week 4 · 4–10 May</div>
+          <h3>Series + Graphs of motion + Moments 1</h3>
+          <div class="topic-item">Binomial expansion, arithmetic/geometric series</div>
+          <div class="topic-item">v–t and s–t graphs, area interpretation</div>
+          <div class="topic-item">Moments 1: turning forces, equilibrium</div>
+          <div class="topic-item">Algebraic projectile problems (M3)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p2">Phase 2</span>
+        <span class="phase-title">Consolidation</span>
+        <span class="phase-dates">11–24 May</span>
+      </div>
+      <p class="phase-desc">Topic practice questions and PLC gap-filling. Start timed 45-min sets.</p>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 2 · Maths</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Go through your PLC</strong> — any red or amber topic gets a focused 20-min block of practice questions before anything else.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">Do timed question sets</strong> — set a 45-min timer, attempt questions without notes, then mark harshly. Method marks only count if working is shown.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">When you get something wrong</strong>, go back to the worked example from phase 1 and identify exactly where your method diverged.</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span>Use Edexcel topic-by-topic question banks rather than full papers at this stage — you want volume on specific topics, not broad practice yet.</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-maths" data-subject="maths">
+          <div class="week-num">Week 5 · 11–17 May</div>
+          <h3>Bivariate data + PLC amber/red items</h3>
+          <div class="topic-item">PMCC, regression lines, coding data</div>
+          <div class="topic-item">Hypothesis testing for correlation</div>
+          <div class="topic-item">Work through all PLC amber/red topics</div>
+        </div>
+        <div class="week-card card-maths" data-subject="maths">
+          <div class="week-num">Week 6 · 18–24 May</div>
+          <h3>Mixed topic questions</h3>
+          <div class="topic-item">Timed 45-min exam-style question sets</div>
+          <div class="topic-item">Mixed pure + applied questions</div>
+          <div class="topic-item">Mark scheme comparison and error logging</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p3">Phase 3</span>
+        <span class="phase-title">Past papers</span>
+        <span class="phase-dates">25 May – 14 Jun</span>
+      </div>
+      <p class="phase-desc">Two full papers per week, timed conditions. Mark, log errors, reattempt missed marks.</p>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 3 · Maths</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Sit the paper fully timed</strong> — no stopping, no checking notes mid-paper. Exam conditions means exam conditions.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">Mark with the actual mark scheme.</strong> Be honest. A correct answer with wrong working often gets 0 — check method marks specifically.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">For every mark dropped</strong>, write: the topic, what you did wrong, and the correct method. This list is your revision priority for the next session.</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span><strong style="color:var(--text);font-weight:500;">The next day</strong>, redo every question you dropped marks on — without looking at the mark scheme — then check again.</span></div>
+        <div class="method-step"><span class="method-step-num">05</span><span>Track your scores across papers. If you're not improving, the issue is your error review — you're not actually fixing the gaps.</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-maths" data-subject="maths">
+          <div class="week-num">Weeks 7–9</div>
+          <h3>Full paper practice</h3>
+          <div class="topic-item">2 full papers/week (Pure + Applied split)</div>
+          <div class="topic-item">Strict timed conditions</div>
+          <div class="topic-item">Log error types each paper</div>
+          <div class="topic-item">Reattempt all wrong questions next day</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p4">Phase 4</span>
+        <span class="phase-title">Final push</span>
+        <span class="phase-dates">15–21 Jun</span>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-maths" data-subject="maths">
+          <div class="week-num">Week 10</div>
+          <h3>High-value review only</h3>
+          <div class="topic-item">Formulae not on the formula sheet</div>
+          <div class="topic-item">Mark-scheme language and phrasing</div>
+          <div class="topic-item">Integration tricks and shortcuts</div>
+          <div class="topic-item">Top 5 personal weak areas only</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subject-plc">
+      <div class="phase-label" style="margin-bottom:0.75rem">
+        <span class="phase-tag" style="background:var(--maths-bg);color:var(--maths);border:1px solid var(--maths-border)">Maths · PLC</span>
+      </div>
+      <div class="subject-plc-actions">
+        <button class="plc-action-btn" type="button" onclick="jumpToPLC('maths')">Open full PLC</button>
+      </div>
+      <div id="embed-plc-maths"></div>
+    </div>
+  </div>
+
+  <!-- ══ PHYSICS ══ -->
+  <div class="section" id="physics">
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p1">Phase 1</span>
+        <span class="phase-title">Content</span>
+        <span class="phase-dates">13 Apr – 10 May</span>
+      </div>
+      <p class="phase-desc">Electric and gravitational fields + space first, since that's where you currently are in class. Further mechanics follows in week 2 while it's still fresh.</p>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 1 · Physics</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Notes first, but keep them minimal</strong> — one page per topic max. Key equations, definitions, diagrams. Don't write out the textbook.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">For every equation, do a worked calculation</strong> immediately. Physics content revision that doesn't involve numbers is almost useless.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">Definitions must be exact.</strong> Write the definition, cover it, write it again. Edexcel mark schemes require specific wording — "proportional to" vs "equal to" will cost you marks.</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span><strong style="color:var(--text);font-weight:500;">Draw diagrams by hand</strong> — field lines, circuit diagrams, wave diagrams. Looking at them is not the same as drawing them.</span></div>
+        <div class="method-step"><span class="method-step-num">05</span><span>After each topic, do 2–3 past paper questions on that topic only to check you actually understood it, not just read it.</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-physics" data-subject="physics">
+          <div class="week-num">Week 1 · 13–19 Apr</div>
+          <h3>Electric & gravitational fields + Space</h3>
+          <div class="topic-item">Coulomb's law, field lines, electric potential</div>
+          <div class="topic-item">Gravitational field strength, g field patterns</div>
+          <div class="topic-item">Orbital mechanics, Kepler's 3rd law</div>
+          <div class="topic-item">Space physics: stars, Hubble's law</div>
+        </div>
+        <div class="week-card card-physics" data-subject="physics">
+          <div class="week-num">Week 2 · 20–26 Apr</div>
+          <h3>Further mechanics + Working as a physicist</h3>
+          <div class="topic-item">2D collisions, conservation of momentum</div>
+          <div class="topic-item">Circular motion: centripetal force and acceleration</div>
+          <div class="topic-item">Simple harmonic motion (if on spec)</div>
+          <div class="topic-item">SI units, uncertainties, significant figures</div>
+          <div class="topic-item">Graphs, gradients, error bars</div>
+        </div>
+        <div class="week-card card-physics" data-subject="physics">
+          <div class="week-num">Week 3 · 27 Apr – 3 May</div>
+          <h3>Waves + Electric circuits</h3>
+          <div class="topic-item">Transverse/longitudinal, superposition, stationary waves</div>
+          <div class="topic-item">Diffraction, interference, Young's double slit</div>
+          <div class="topic-item">Kirchhoff's laws, EMF, internal resistance</div>
+          <div class="topic-item">Potential dividers, resistivity</div>
+        </div>
+        <div class="week-card card-physics" data-subject="physics">
+          <div class="week-num">Week 4 · 4–10 May</div>
+          <h3>Mechanics</h3>
+          <div class="topic-item">SUVAT equations and applications</div>
+          <div class="topic-item">Newton's laws, free body diagrams</div>
+          <div class="topic-item">Projectile motion</div>
+          <div class="topic-item">Equilibrium of forces, moments</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p2">Phase 2</span>
+        <span class="phase-title">Consolidation</span>
+        <span class="phase-dates">11–24 May</span>
+      </div>
+      <p class="phase-desc">Required practicals, definitions, and structured question practice. Definitions must be word-for-word.</p>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 2 · Physics</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Required practicals</strong> — for each one, write out: aim, equipment, method, how to reduce uncertainty, what the graph shows, and what the gradient means. These come up every year.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">6-mark questions need a structure</strong> — point, explain the physics, link to the context. Practice writing these out in full even if it feels slow.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">Calculation practice</strong> — use Edexcel topic question banks, not just textbook exercises. Exam questions word things differently to textbooks.</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span>For any calculation you get wrong, identify whether it was: wrong equation, algebra error, unit error, or misreading the question. Different errors need different fixes.</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-physics" data-subject="physics">
+          <div class="week-num">Week 5 · 11–17 May</div>
+          <h3>Practical skills + definitions</h3>
+          <div class="topic-item">6-mark practical questions (method, results, evaluation)</div>
+          <div class="topic-item">All required practicals summarised</div>
+          <div class="topic-item">Key definitions — learn word for word</div>
+          <div class="topic-item">Core derivations</div>
+        </div>
+        <div class="week-card card-physics" data-subject="physics">
+          <div class="week-num">Week 6 · 18–24 May</div>
+          <h3>Mixed topic practice</h3>
+          <div class="topic-item">Edexcel-style structured questions</div>
+          <div class="topic-item">Calculation practice across all topics</div>
+          <div class="topic-item">Data analysis and graph questions</div>
+          <div class="topic-item">Mark-scheme comparison</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p3">Phase 3</span>
+        <span class="phase-title">Past papers</span>
+        <span class="phase-dates">25 May – 14 Jun</span>
+      </div>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 3 · Physics</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Full paper, full timing</strong> — Paper 1 is 1h 45m, Paper 2 is 1h 45m. No stopping early. Physics papers are long and time management matters.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">Show all working in calculations</strong> — even if you get the wrong answer, method marks are available. A bare answer with no working gets zero if wrong.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">After marking</strong>, categorise every dropped mark: was it a knowledge gap, a calculation error, or a misread question? Each category gets a different response.</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span>Pay particular attention to the "describe and explain" questions — these are where C-grade students lose the most marks by describing without explaining the physics.</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-physics" data-subject="physics">
+          <div class="week-num">Weeks 7–9</div>
+          <h3>Full paper practice</h3>
+          <div class="topic-item">Paper 1 + Paper 2 alternating each week</div>
+          <div class="topic-item">Strict timing — no extra time</div>
+          <div class="topic-item">Focus on method marks in calculations</div>
+          <div class="topic-item">6-mark extended answer technique</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p4">Phase 4</span>
+        <span class="phase-title">Final push</span>
+        <span class="phase-dates">15–21 Jun</span>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-physics" data-subject="physics">
+          <div class="week-num">Week 10</div>
+          <h3>Key equations + definitions</h3>
+          <div class="topic-item">All formulae not on the data sheet</div>
+          <div class="topic-item">Required practicals summary card</div>
+          <div class="topic-item">Weak topic flashcards only</div>
+          <div class="topic-item">One final timed paper</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subject-plc">
+      <div class="phase-label" style="margin-bottom:0.75rem">
+        <span class="phase-tag" style="background:var(--physics-bg);color:var(--physics);border:1px solid var(--physics-border)">Physics · PLC</span>
+      </div>
+      <div class="subject-plc-actions">
+        <button class="plc-action-btn" type="button" onclick="jumpToPLC('physics')">Open full PLC</button>
+      </div>
+      <div id="embed-plc-physics"></div>
+    </div>
+  </div>
+
+  <!-- ══ ECONOMICS ══ -->
+  <div class="section" id="econ">
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p1">Phase 1</span>
+        <span class="phase-title">Content</span>
+        <span class="phase-dates">13 Apr – 10 May</span>
+      </div>
+      <p class="phase-desc">Theme 1 then Theme 2 in full. Make sure your diagrams are accurate and your definitions precise.</p>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 1 · Economics</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Work through your PLC topic by topic</strong> — for each one, write a one-paragraph explanation in your own words as if teaching it to someone. If you can't, you don't know it yet.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">Draw each diagram from scratch</strong> — correctly labelled axes, correctly labelled curves, arrows showing the shift direction. Don't copy; reconstruct from memory.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">Learn your key definitions exactly</strong> — PED formula, the definition of a public good, what a negative externality means. These are 2-mark gimmes you cannot afford to lose.</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span>At the end of each topic, write one KAA paragraph applying it to a real-world example — this trains you to move from content to exam technique simultaneously.</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-econ" data-subject="econ">
+          <div class="week-num">Week 1 · 13–19 Apr</div>
+          <h3>Theme 1: Markets (part 1)</h3>
+          <div class="topic-item">Demand, supply, price mechanism</div>
+          <div class="topic-item">PED, PES, YED, XED — calculations and diagrams</div>
+          <div class="topic-item">Consumer and producer surplus</div>
+          <div class="topic-item">Market failure: intro and types</div>
+        </div>
+        <div class="week-card card-econ" data-subject="econ">
+          <div class="week-num">Week 2 · 20–26 Apr</div>
+          <h3>Theme 1: Market failure (part 2)</h3>
+          <div class="topic-item">Externalities: positive and negative</div>
+          <div class="topic-item">Public goods, information failure</div>
+          <div class="topic-item">Government intervention: taxes, subsidies, price controls</div>
+          <div class="topic-item">Government failure</div>
+        </div>
+        <div class="week-card card-econ" data-subject="econ">
+          <div class="week-num">Week 3 · 27 Apr – 3 May</div>
+          <h3>Theme 2: Macroeconomics (part 1)</h3>
+          <div class="topic-item">National income, GDP measurement</div>
+          <div class="topic-item">AD/AS model — shifts and diagrams</div>
+          <div class="topic-item">Economic objectives</div>
+          <div class="topic-item">Fiscal and monetary policy</div>
+        </div>
+        <div class="week-card card-econ" data-subject="econ">
+          <div class="week-num">Week 4 · 4–10 May</div>
+          <h3>Theme 2: Macroeconomics (part 2)</h3>
+          <div class="topic-item">International trade, comparative advantage</div>
+          <div class="topic-item">Exchange rates: effects and policy</div>
+          <div class="topic-item">Balance of payments</div>
+          <div class="topic-item">Economic growth, inequality, living standards</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p2">Phase 2</span>
+        <span class="phase-title">Consolidation</span>
+        <span class="phase-dates">11–24 May</span>
+      </div>
+      <p class="phase-desc">Essay technique and data response. KAA chain must be automatic by end of week 5.</p>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 2 · Economics</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Write timed KAA paragraphs</strong> — set 12 minutes for an 8-mark answer, 20 minutes for a 12-mark. Don't plan for too long; the planning should be automatic by now.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">Evaluation is where the marks are</strong> — "it depends on the PED", "in the short run vs long run", "this conflicts with the objective of equality". Practice adding a genuine evaluative point to every answer, not just restating the point.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">For data response</strong> — always extract a figure and put it in context. Don't just quote it: "Output fell by 2.3%, suggesting a significant contraction in AD."</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span>Compare your answers to mark scheme indicative content — but remember the mark scheme shows examples, not the only route to full marks. Focus on whether your reasoning chain is complete.</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-econ" data-subject="econ">
+          <div class="week-num">Week 5 · 11–17 May</div>
+          <h3>Essay technique + diagrams</h3>
+          <div class="topic-item">KAA chain-of-reasoning: Knowledge, Application, Analysis</div>
+          <div class="topic-item">Key diagrams: AD/AS, externalities, price determination</div>
+          <div class="topic-item">Timed 8-mark and 12-mark answers</div>
+        </div>
+        <div class="week-card card-econ" data-subject="econ">
+          <div class="week-num">Week 6 · 18–24 May</div>
+          <h3>Data response practice</h3>
+          <div class="topic-item">Section A data response technique</div>
+          <div class="topic-item">Extracting and applying data in answers</div>
+          <div class="topic-item">Context paragraphs</div>
+          <div class="topic-item">Mark-scheme comparison</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p3">Phase 3</span>
+        <span class="phase-title">Past papers</span>
+        <span class="phase-dates">25 May – 14 Jun</span>
+      </div>
+      <div class="method-box">
+        <div class="method-box-label">How to revise · Phase 3 · Economics</div>
+        <div class="method-step"><span class="method-step-num">01</span><span><strong style="color:var(--text);font-weight:500;">Plan before you write</strong> — spend 3–4 minutes outlining your KAA structure for each essay question. Unplanned essays meander and lose evaluation marks.</span></div>
+        <div class="method-step"><span class="method-step-num">02</span><span><strong style="color:var(--text);font-weight:500;">Section A data response</strong> — read the extract carefully before the questions. Underline relevant data. The extract is there to be used; answers that ignore it get capped.</span></div>
+        <div class="method-step"><span class="method-step-num">03</span><span><strong style="color:var(--text);font-weight:500;">After marking</strong>, look at your evaluations specifically — did you just list counterpoints, or did you actually explain why the original argument might be limited? That distinction is the difference between a C and a B.</span></div>
+        <div class="method-step"><span class="method-step-num">04</span><span>Build a bank of 5–6 strong evaluation points per theme that you can adapt to almost any question — e.g. "depends on the price elasticity", "government failure may offset the policy benefit", "short-run vs long-run trade-offs".</span></div>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-econ" data-subject="econ">
+          <div class="week-num">Weeks 7–9</div>
+          <h3>Full papers</h3>
+          <div class="topic-item">Paper 1 (Theme 1) + Paper 2 (Theme 2)</div>
+          <div class="topic-item">Timed essays under exam conditions</div>
+          <div class="topic-item">Plan essays before writing</div>
+          <div class="topic-item">Review with mark scheme after each paper</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <div class="phase-label">
+        <span class="phase-tag bg-p4">Phase 4</span>
+        <span class="phase-title">Final push</span>
+        <span class="phase-dates">15–21 Jun</span>
+      </div>
+      <div class="week-grid">
+        <div class="week-card card-econ" data-subject="econ">
+          <div class="week-num">Week 10</div>
+          <h3>Key terms + evaluation bank</h3>
+          <div class="topic-item">Top evaluation points per theme</div>
+          <div class="topic-item">Key data and statistics to quote</div>
+          <div class="topic-item">Diagram checklist — accuracy check</div>
+          <div class="topic-item">One final timed paper</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subject-plc">
+      <div class="phase-label" style="margin-bottom:0.75rem">
+        <span class="phase-tag" style="background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)">Economics · PLC</span>
+      </div>
+      <div class="subject-plc-actions">
+        <button class="plc-action-btn" type="button" onclick="jumpToPLC('econ')">Open full PLC</button>
+      </div>
+      <div id="embed-plc-econ"></div>
+    </div>
+  </div>
+
+  <!-- ══ SCHEDULE ══ -->
+  <div class="section" id="schedule">
+
+    <div class="info-box" style="margin-bottom:1.5rem;">
+      <strong>Physics 7 hrs · Maths 6 hrs · Economics 6 hrs</strong> per week (19 total). Extra physics time is front-loaded mid-week; weekends carry two longer blocks. Same 9–11 pm peak for evening sessions where possible. Adjust when term restarts and school compresses your evenings.
+    </div>
+
+    <div class="schedule-grid">
+      <div class="schedule-card">
+        <div class="schedule-day">Monday</div>
+        <div class="schedule-sessions">
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--physics)"></span>
+            <span>Physics · 2 hrs</span>
+          </div>
+          <div class="session-info">Evening 9–11 pm · Topic content + calculation practice</div>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-day">Tuesday</div>
+        <div class="schedule-sessions">
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--maths)"></span>
+            <span>Maths · 2 hrs</span>
+          </div>
+          <div class="session-info">Evening 9–11 pm · Worked examples then practice questions</div>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-day">Wednesday</div>
+        <div class="schedule-sessions">
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--physics)"></span>
+            <span>Physics · 2 hrs</span>
+          </div>
+          <div class="session-info">Evening 9–11 pm · Further mechanics, fields, or mixed calculations</div>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-day">Thursday</div>
+        <div class="schedule-sessions">
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--econ)"></span>
+            <span>Economics · 2 hrs</span>
+          </div>
+          <div class="session-info">Evening · Content notes, diagrams, or timed short answers</div>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-day">Friday</div>
+        <div class="schedule-sessions">
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--physics)"></span>
+            <span>Physics · 1 hr</span>
+          </div>
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--maths)"></span>
+            <span>Maths · 2 hrs</span>
+          </div>
+          <div class="session-info">Evening · Short physics recap or weak topic, then main maths block · Short break between if needed</div>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-day">Saturday</div>
+        <div class="schedule-sessions">
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--physics)"></span>
+            <span>Physics · 2 hrs</span>
+          </div>
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--econ)"></span>
+            <span>Economics · 2 hrs</span>
+          </div>
+          <div class="session-info">Morning/afternoon block · Physics first, economics second · Break between</div>
+        </div>
+      </div>
+      <div class="schedule-card">
+        <div class="schedule-day">Sunday</div>
+        <div class="schedule-sessions">
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--maths)"></span>
+            <span>Maths · 2 hrs</span>
+          </div>
+          <div class="session-pill">
+            <span class="session-dot" style="background:var(--econ)"></span>
+            <span>Economics · 2 hrs</span>
+          </div>
+          <div class="session-pill">
+            <span class="session-dot" style="background:rgba(255,255,255,0.3)"></span>
+            <span>Weekly review · 30 min</span>
+          </div>
+          <div class="session-info">Afternoon · Maths then economics · Finish with cross-subject error review</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:1.5rem;">
+      <strong>Key habits:</strong><br>
+      End every session with a 5-min "what did I get wrong?" note — this is what actually shifts grades.<br>
+      From week 7, replace content sessions with timed papers across all subjects.<br>
+      Your cycling commute is dead time — use it for audio recall or formula recitation, not screens.<br>
+      9–11 pm peak = hard thinking only. No passive re-reading in that window.
+    </div>
+  </div>
+
+  <!-- ══ PAPER LOG ══ -->
+  <div class="section" id="papers">
+    <div class="phase-label" style="margin-bottom:1rem">
+      <span class="phase-tag" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border2)">Past papers &amp; mocks</span>
+    </div>
+    <p class="phase-desc" style="margin-bottom:1rem">Log each paper or timed test. The checklist fields are what turns “I did a paper” into something you can revise from.</p>
+
+    <form id="paper-form">
+      <div class="paper-form-grid">
+        <select id="paper-subject" required>
+          <option value="">Subject</option>
+          <option value="maths">Mathematics</option>
+          <option value="physics">Physics</option>
+          <option value="econ">Economics</option>
+        </select>
+        <select id="paper-type" required>
+          <option value="">Paper type</option>
+          <option value="Paper 1">Paper 1</option>
+          <option value="Paper 2">Paper 2</option>
+          <option value="Paper 3">Paper 3</option>
+          <option value="Mock">Mock</option>
+          <option value="Specimen">Specimen</option>
+          <option value="Topic pack">Topic pack</option>
+          <option value="Other">Other</option>
+        </select>
+        <input id="paper-code" type="text" required placeholder="Paper code (e.g. June 2022, 9MA0 01)">
+        <input id="paper-date" type="date" required>
+        <input id="paper-score" type="number" min="0" placeholder="Score (optional)">
+        <input id="paper-max" type="number" min="1" placeholder="Max marks (optional)">
+      </div>
+      <div class="paper-checklist">
+        <input id="paper-error" type="text" required placeholder="Biggest mistake type (e.g. dropped method marks on SUVAT)">
+        <input id="paper-redo" type="text" required placeholder="Topic / skill to redo before next paper">
+        <input id="paper-eval" type="text" required placeholder="One evaluation or ‘exam phrase’ to use next time">
+      </div>
+      <div class="attempt-actions">
+        <button class="plc-action-btn primary" type="submit">Save paper</button>
+      </div>
+    </form>
+
+    <div class="paper-log-list" id="paper-log-list"></div>
+  </div>
+
+  <!-- ══ RESOURCES ══ -->
+  <div class="section" id="resources">
+    <div class="resources-inner">
+
+      <div style="margin-bottom:2.5rem">
+        <div class="phase-label" style="margin-bottom:1rem">
+          <span class="phase-tag" style="background:var(--maths-bg);color:var(--maths);border:1px solid var(--maths-border)">Maths</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a class="resource-link" href="https://www.physicsandmathstutor.com/maths-revision/a-level-edexcel/" target="_blank">
+            <span class="resource-title">Physics &amp; Maths Tutor — Edexcel Maths</span>
+            <span class="resource-desc">Topic-by-topic past paper questions, mark schemes and revision notes</span>
+          </a>
+          <a class="resource-link" href="https://www.madasmaths.com/" target="_blank">
+            <span class="resource-title">MadAsMaths</span>
+            <span class="resource-desc">Extensive practice papers and topic booklets, especially good for harder A-Level questions</span>
+          </a>
+          <a class="resource-link" href="https://www.examsolutions.net/" target="_blank">
+            <span class="resource-title">ExamSolutions</span>
+            <span class="resource-desc">Video walkthroughs of past paper questions for Edexcel Maths</span>
+          </a>
+          <a class="resource-link" href="https://www.drfrostmaths.com/" target="_blank">
+            <span class="resource-title">Dr Frost Maths</span>
+            <span class="resource-desc">Interactive practice questions by topic with instant feedback</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-bottom:2.5rem">
+        <div class="phase-label" style="margin-bottom:1rem">
+          <span class="phase-tag" style="background:var(--physics-bg);color:var(--physics);border:1px solid var(--physics-border)">Physics</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a class="resource-link" href="https://www.physicsandmathstutor.com/physics-revision/a-level-edexcel/" target="_blank">
+            <span class="resource-title">Physics &amp; Maths Tutor — Edexcel Physics</span>
+            <span class="resource-desc">Topic questions, mark schemes, revision notes and flashcards</span>
+          </a>
+          <a class="resource-link" href="https://isaacphysics.org/" target="_blank">
+            <span class="resource-title">Isaac Physics</span>
+            <span class="resource-desc">Free problem sets and mastery questions — excellent for further mechanics and fields</span>
+          </a>
+          <a class="resource-link" href="https://www.savemyexams.com/a-level/physics/edexcel/" target="_blank">
+            <span class="resource-title">Save My Exams — Physics</span>
+            <span class="resource-desc">Concise revision notes, topic questions and model answers for Edexcel</span>
+          </a>
+          <a class="resource-link" href="https://www.youtube.com/@physicsonline" target="_blank">
+            <span class="resource-title">Physics Online (YouTube)</span>
+            <span class="resource-desc">Clear video explanations of A-Level Physics topics, well-structured by unit</span>
+          </a>
+        </div>
+      </div>
+
+      <div style="margin-bottom:2.5rem">
+        <div class="phase-label" style="margin-bottom:1rem">
+          <span class="phase-tag" style="background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)">Economics</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a class="resource-link" href="https://www.physicsandmathstutor.com/economics-revision/a-level-edexcel-a/" target="_blank">
+            <span class="resource-title">Physics &amp; Maths Tutor — Edexcel Economics</span>
+            <span class="resource-desc">Topic notes, essay plans and past paper questions for Edexcel</span>
+          </a>
+          <a class="resource-link" href="https://www.economicshelp.org/" target="_blank">
+            <span class="resource-title">Economics Help</span>
+            <span class="resource-desc">Clear explanations of all key concepts with real-world examples for essay context</span>
+          </a>
+          <a class="resource-link" href="https://www.tutor2u.net/economics/reference" target="_blank">
+            <span class="resource-title">Tutor2u Economics</span>
+            <span class="resource-desc">Revision notes, model essays and topic summaries — strong on KAA structure</span>
+          </a>
+          <a class="resource-link" href="https://www.savemyexams.com/a-level/economics/edexcel/" target="_blank">
+            <span class="resource-title">Save My Exams — Economics</span>
+            <span class="resource-desc">Structured notes and practice questions aligned to the Edexcel specification</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="phase-label" style="margin-bottom:1rem">
+          <span class="phase-tag" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border2)">Past Papers</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a class="resource-link" href="https://qualifications.pearson.com/en/qualifications/edexcel-a-levels.html" target="_blank">
+            <span class="resource-title">Pearson / Edexcel — Official Past Papers</span>
+            <span class="resource-desc">Official past papers and mark schemes direct from the exam board</span>
+          </a>
+          <a class="resource-link" href="https://www.physicsandmathstutor.com/past-papers/a-level/" target="_blank">
+            <span class="resource-title">PMT — All Past Papers Index</span>
+            <span class="resource-desc">Easy-to-browse index of past papers across all three subjects</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ PLC ══ -->
+  <div class="section" id="plc">
+
+    <div class="plc-actions">
+      <button class="plc-action-btn primary" onclick="copyWeakAreas()">Copy red &amp; amber to clipboard ↗</button>
+      <button class="plc-action-btn" onclick="resetPLC()">Reset all</button>
+      <div class="plc-search-filter-cluster">
+        <div class="plc-search-wrap" title="Filter topics by keyword">
+          <input type="search" id="plc-search" placeholder="Search PLC topics…" autocomplete="off">
+        </div>
+        <div class="plc-filter">
+          <button type="button" class="filter-btn active" data-plc-filter="all">All</button>
+          <button type="button" class="filter-btn" data-plc-filter="r" style="color:#c86e6e;">Red only</button>
+          <button type="button" class="filter-btn" data-plc-filter="a" style="color:#c8a030;">Amber only</button>
+          <button type="button" class="filter-btn" data-plc-filter="none">Not rated</button>
+          <button type="button" class="filter-btn" data-plc-filter="review" title="Topics with a review date due within 7 days (or overdue)">Review queue</button>
+        </div>
+      </div>
+      <span class="copy-confirm" id="copy-confirm">Copied!</span>
+    </div>
+
+    <!-- ── MATHS PLC ── -->
+    <div class="plc-subject" data-plc-subject="maths">
+      <div class="plc-subject-header">
+        <span class="dot" style="background:var(--maths)"></span>
+        <span class="plc-subject-title" style="color:var(--maths)">Mathematics</span>
+        <div class="plc-summary">
+          <span class="plc-count"><span class="plc-count-dot" style="background:#c86e6e"></span><span id="plc-maths-r">0</span>R</span>
+          <span class="plc-count"><span class="plc-count-dot" style="background:#c8a030"></span><span id="plc-maths-a">0</span>A</span>
+          <span class="plc-count"><span class="plc-count-dot" style="background:#4a9e4a"></span><span id="plc-maths-g">0</span>G</span>
+        </div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">P1 — Algebra & functions</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Equation of straight lines (gradient, intercept form)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Parallel and perpendicular lines</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Midpoints and perpendicular bisectors</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Length and area problems on a grid</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">The discriminant (nature of roots)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Points of intersection (cubic/quartic/reciprocal graphs)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Quadratic inequalities (algebraic and graphical)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Dividing polynomials and the factor theorem</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Comparing coefficients</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Modulus function and graphs</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Proof by contradiction</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Algebraic fractions: adding, subtracting, simplifying</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Partial fractions (all denominator types)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">P2/P6 — Differentiation</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Gradients of curves and finding the derivative</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Differentiating from first principles</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Gradients, tangents and normals</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Second order derivatives</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Stationary points and modelling with differentiation</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Chain rule</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Product rule</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Quotient rule</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Implicit differentiation</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">P3/P7 — Integration</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Integrating xⁿ; indefinite integrals; finding functions</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Definite integrals and areas under curves</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Areas between curves and lines</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Integrating (ax + b)ⁿ</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Integration by substitution</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Integration by parts</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Differential equations: separation of variables, general &amp; particular solutions</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">P4 — Binomial expansion</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Pascal's triangle and binomial expansion</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Expanding (1 + x)ⁿ for rational n</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Expanding (a + bx)ⁿ for rational n; validity condition |bx/a| &lt; 1</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Comparing coefficients to solve exam questions</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">P5 — Trigonometry 1</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Graphs of sine, cosine and tangent</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">CAST diagram; angles in all four quadrants; exact values</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Trig identities: sin²x + cos²x = 1; sinx/cosx = tanx</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Solving simple and harder trig equations</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Radian measure; solving equations in radians</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">P8 — Trigonometry 2</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Addition formulae (compound angles)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Double angle formulae and applications</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Harmonic form: R sin(x + α) / R cos(x + α)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Reciprocal trig functions: sec, cosec, cot and their graphs</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Inverse trig functions: arcsin, arccos, arctan</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Differentiating sin x and cos x; powers of trig (chain rule)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Integrating sin x, cos x; using trig identities to integrate</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Integrating even and odd powers of trig</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">P9 — Exponentials & logarithms</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Exponential functions; y = eˣ; logarithms and laws of logs</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Solving equations using logarithms; natural log ln x</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Differentiating eˣ, aˣ, ln x, log_a x</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Integrating eˣ, 1/x, ln x functions</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Exponential modelling (e.g. rates of change, car price)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">P10 — Circles</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Arc length and areas of sectors and segments (radians)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Equation of a circle; centre and radius</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Circle–line intersections</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Tangent and chord properties; circles and triangles</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">S1 — Central tendency & spread</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Mean (discrete and grouped); median; quartiles and percentiles</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Standard deviation and variance (discrete and grouped)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Coding data to calculate mean and standard deviation</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Comparing data sets; combining means</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">S2 — Binomial distribution & hypothesis testing</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Discrete probability distributions</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Binomial distribution as a model; calculating probabilities</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Hypothesis testing language: H₀, H₁, significance level, p-value</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Critical values, critical region, acceptance region; 1-tail vs 2-tail</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Hypothesis test for proportion in the binomial distribution</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">S3 — Probability</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Mutually exclusive and independent events</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Conditional probability: P(A|B) = P(A∩B)/P(B)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Tree diagrams, Venn diagrams, two-way tables</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Bivariate data: PMCC and regression lines</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Hypothesis testing for correlation</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">M1/M2 — Mechanics: constant acceleration & Newton's laws</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">SUVAT equations (all five); vertical motion under gravity</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Newton's first, second and third laws</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Resolving forces in 2D; equilibrium of a particle</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Friction: coefficient of friction, limiting equilibrium, motion on a slope</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Graphs of motion: v–t, s–t, a–t; area interpretation</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">M3 — Projectiles; Moments</div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Projectiles: horizontal projection, vector form</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Projectiles at an angle; range and max height</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Algebraic/general trajectory using trig identities</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="maths"><span class="plc-topic-name">Moments 1: turning forces; principle of moments; equilibrium</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+    </div>
+
+    <!-- ── PHYSICS PLC ── -->
+    <div class="plc-subject" data-plc-subject="physics">
+      <div class="plc-subject-header">
+        <span class="dot" style="background:var(--physics)"></span>
+        <span class="plc-subject-title" style="color:var(--physics)">Physics</span>
+        <div class="plc-summary">
+          <span class="plc-count"><span class="plc-count-dot" style="background:#c86e6e"></span><span id="plc-physics-r">0</span>R</span>
+          <span class="plc-count"><span class="plc-count-dot" style="background:#c8a030"></span><span id="plc-physics-a">0</span>A</span>
+          <span class="plc-count"><span class="plc-count-dot" style="background:#4a9e4a"></span><span id="plc-physics-g">0</span>G</span>
+        </div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">Waves</div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Progressive waves: displacement, amplitude, wavelength, frequency, period, wave speed</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Wave equation: v = fλ</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Transverse and longitudinal waves; compression/rarefaction</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Energy and intensity: I ∝ A²; I ∝ 1/r² (point source)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Superposition principle; path and phase difference</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Stationary waves: formation, nodes, antinodes, node spacing = λ/2</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Harmonics: fundamental frequency for strings and pipes (open/closed)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Refraction: Snell's law n₁sinθ₁ = n₂sinθ₂; refractive index n = c/v</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Total internal reflection: conditions, critical angle sinC = 1/n, optical fibres</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Diffraction at a single slit; gap ≈ λ gives maximum spreading</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Young's double slit: fringe spacing w = λD/d</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Diffraction grating: dsinθ = nλ; angles for maxima</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Polarisation; Malus's law I = I₀cos²θ</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">EM spectrum: order by wavelength/frequency; typical wavelengths and uses</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">Mechanics</div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Scalars and vectors; vector addition (triangle/parallelogram); resolving into components</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Moments: moment = Fd; principle of moments; centre of gravity</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Equilibrium conditions: ΣF = 0, Στ = 0</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Density and pressure: ρ = m/V; p = F/A; p = ρgh</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Upthrust and Archimedes' principle: upthrust = ρVg</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">SUVAT equations (all five); free fall; g = 9.81 m s⁻²</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Velocity-time graphs: gradient = acceleration, area = displacement</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Projectile motion: independent horizontal (constant v) and vertical (constant a) components</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Range and maximum height; optimal launch angle</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Newton's three laws; F = ma in multiple directions; terminal velocity</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Momentum p = mv; conservation of momentum; impulse J = FΔt = Δp</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Elastic vs inelastic collisions; testing with KE calculation</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Work, energy, power: W = Fd cosθ; KE = ½mv²; GPE = mgh; P = Fv; efficiency</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">Further mechanics</div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">2D collisions: conservation of momentum in x and y independently</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Circular motion: ω = v/r = 2πf; centripetal acceleration a = v²/r = ω²r</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Centripetal force F = mv²/r = mω²r; identifying what provides it in context</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Vertical circles: Newton's 2nd law at top and bottom; minimum speed</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">SHM definition: a = −ω²x; acceleration proportional and opposite to displacement</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">SHM equations: x = A cosωt; v = −Aω sinωt; v_max = Aω; a_max = Aω²</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">SHM energy: KE = ½mω²(A²−x²); total E = ½mω²A² constant</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Damping: light, heavy, critical; effect on amplitude over time</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Resonance: driving frequency = natural frequency; amplitude response curve</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">Electric circuits</div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Charge and current: Q = It; conventional vs electron flow</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Potential difference V = W/Q; resistance R = V/I; Ohm's law</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Resistivity: R = ρL/A; factors affecting resistance</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">I-V characteristics: resistor, filament lamp, diode, thermistor, LDR</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Series and parallel circuits; Kirchhoff's current and voltage laws</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">EMF and internal resistance: ε = V + Ir; finding ε and r from V-I graph</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Power in circuits: P = VI = I²R = V²/R</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Potential dividers: V_out = V_in × R₂/(R₁+R₂); thermistor/LDR in divider</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Alternating current: peak and rms values; V_rms = V₀/√2</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Oscilloscope: reading time period, peak voltage, calculating frequency</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">Electric &amp; gravitational fields</div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Gravitational force: F = Gm₁m₂/r²; Newton's law of gravitation</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Gravitational field strength: g = GM/r²; variation with r (∝ 1/r² outside)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Gravitational potential: V_g = −GM/r; negative; work done W = mΔV_g</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Escape velocity: v_esc = √(2GM/r)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Orbital mechanics: GMm/r² = mv²/r; orbital speed and period; T² ∝ r³ (Kepler's 3rd)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Geostationary orbits: 24h period, above equator, applications</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Coulomb's law: F = kQ₁Q₂/r²; compare with gravitational force</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Electric field strength: E = F/Q; E = kQ/r² (point); E = V/d (uniform)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Electric potential: V = kQ/r; work W = QΔV; equipotential lines</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Capacitance: C = Q/V; energy E = ½QV = ½CV²; capacitors in series and parallel</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Charging and discharging: Q = Q₀e^(−t/RC); time constant τ = RC</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Comparing E and g fields: similarities and differences in field patterns</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">Space</div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Stellar classification; HR diagram: main sequence, red giants, white dwarfs</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Luminosity and flux: L = 4πr²σT⁴ (Stefan's law); F = L/4πd²</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Wien's law: λ_max T = 2.90 × 10⁻³ m K; star temperature from peak wavelength</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Stellar spectra: absorption spectra; spectral lines linked to elements</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Doppler effect: Δλ/λ = v/c; redshift/blueshift to find speed of source</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Hubble's law: v = H₀d; evidence for expanding universe; recession speed</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Age of universe: t = 1/H₀</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Big Bang evidence: CMB radiation, Hubble's law, abundance of light elements</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Stellar lifecycle: main sequence → red giant → white dwarf; or supernova → neutron star/black hole</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Chandrasekhar limit; nuclear fusion in stars: proton-proton chain; E = mc²</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">Working as a physicist</div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">SI units and base quantities</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Uncertainties: absolute, percentage, combining in calculations</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Significant figures; error bars on graphs</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Graphs: gradient, intercept, linearisation (log graphs)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="physics"><span class="plc-topic-name">Required practical methodology: aim, equipment, method, reducing uncertainty, graph analysis</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+    </div>
+
+    <!-- ── ECONOMICS PLC ── -->
+    <div class="plc-subject" data-plc-subject="econ">
+      <div class="plc-subject-header">
+        <span class="dot" style="background:var(--econ)"></span>
+        <span class="plc-subject-title" style="color:var(--econ)">Economics</span>
+        <div class="plc-summary">
+          <span class="plc-count"><span class="plc-count-dot" style="background:#c86e6e"></span><span id="plc-econ-r">0</span>R</span>
+          <span class="plc-count"><span class="plc-count-dot" style="background:#c8a030"></span><span id="plc-econ-a">0</span>A</span>
+          <span class="plc-count"><span class="plc-count-dot" style="background:#4a9e4a"></span><span id="plc-econ-g">0</span>G</span>
+        </div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">1.1 — The economic problem</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Positive vs normative statements; assumptions in economics</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Scarcity; renewable vs non-renewable resources</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Opportunity cost: definition and real-world applications</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Production Possibility Frontiers: drawing, shifts, opportunity cost on PPF</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Specialisation and division of labour; Adam Smith; functions of money</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Economic systems: free market, mixed economy, command economy</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">1.2 — How markets work</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Rational decision making; utility maximisation; marginal utility</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Theory of demand: law of demand, demand curve, factors shifting demand</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">PED: formula, values, determinants, revenue implications</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">YED: formula, normal vs inferior goods, luxury goods</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">XED: formula, substitutes vs complements</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Theory of supply: law of supply, supply curve, factors shifting supply</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">PES: formula, values, determinants</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Price determination: equilibrium, surplus and shortage, market clearing</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Functions of the price mechanism: rationing, incentive, signalling</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Consumer and producer surplus: diagrams and changes when price changes</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Behavioural economics: bounded rationality, nudge theory</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">1.3 — Market failure</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Negative externalities: production and consumption; social vs private cost/benefit diagram</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Positive externalities: production and consumption; under-provision diagram</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Public goods: non-excludable, non-rival, free rider problem</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Information failure: asymmetric information, moral hazard, adverse selection</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Merit and demerit goods: under/over-consumption; paternalism</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">1.4 — Government intervention &amp; failure</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Indirect taxation: specific vs ad valorem; diagram; incidence of tax</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Subsidies: diagram; effect on price and quantity; who benefits</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Minimum prices (price floors): diagram, surplus, examples (min wage, alcohol)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Maximum prices (price ceilings): diagram, shortage, examples (rent controls)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Tradeable pollution permits: how they work, advantages and disadvantages</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">State provision of public goods; provision of information to reduce gaps</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Regulation: types, advantages and disadvantages</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Government failure: definition, causes, unintended consequences</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">2.1 — Measures of economic performance</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">GDP measurement: real vs nominal; GDP vs GNI; PPP</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Limitations of GDP as a measure of living standards</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Inflation: CPI calculation, causes (demand-pull, cost-push), effects</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Disinflation and deflation: causes, effects, policies</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Unemployment: claimant count, Labour Force Survey, ILO definition</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Types and causes of unemployment: cyclical, structural, frictional, seasonal</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Effects of unemployment on individuals, firms, government, society</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">2.2/2.3 — Aggregate demand &amp; aggregate supply</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Components of AD: C + I + G + (X−M); understanding each component</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Factors affecting consumption: income, interest rates, wealth, confidence, credit</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Investment factors: interest rates, business confidence, accelerator</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Net trade: factors affecting exports/imports; exchange rate effects on X-M</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">SRAS: shape; factors shifting (wage costs, raw material costs)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">LRAS: classical (vertical) vs Keynesian (reverse-L); factors shifting LRAS</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">AD/AS diagram analysis: showing effects of shifts on output and price level</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">2.4 — National income</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Circular flow of income: households, firms, injections, withdrawals</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Equilibrium national income: where injections = withdrawals</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">The multiplier: concept, ratio, process; formula 1/(1−MPC) and 1/MPW</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Output gaps: positive and negative; implications for policy</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Business cycle: boom, recession, recovery; costs and benefits of growth</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">2.5 — Economic policies</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Monetary policy: interest rates, Bank of England MPC, inflation targeting</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Quantitative Easing: process, purpose, limitations</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Fiscal policy: taxation and government spending; budget deficit/surplus; structural vs cyclical deficit</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Supply-side policies (market-based): privatisation, deregulation, reducing union power, tax cuts</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Supply-side policies (interventionist): education, training, infrastructure, R&amp;D</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">International trade: comparative advantage; exchange rates; balance of payments (current account)</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+
+      <div class="plc-group">
+        <div class="plc-group-label">2.6 — Conflicts &amp; trade-offs</div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Macroeconomic objectives: growth, low inflation, low unemployment, BOP equilibrium, equality</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Conflicts between objectives: e.g. growth vs inflation; unemployment vs inflation</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Short-run Phillips curve: inverse relationship between inflation and unemployment</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Policy trade-offs: demand-side vs supply-side; short-run vs long-run</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+        <div class="plc-row" data-plc="econ"><span class="plc-topic-name">Inequality and redistribution; Lorenz curve and Gini coefficient</span><div class="rag-btns"><button class="rag-btn" data-rag="r">R</button><button class="rag-btn" data-rag="a">A</button><button class="rag-btn" data-rag="g">G</button></div></div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="attempt-modal" id="attempt-modal">
+    <div class="attempt-panel">
+      <div class="phase-label" style="margin-bottom:8px">
+        <span class="phase-tag" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border2)">Attempt Log</span>
+      </div>
+      <form id="attempt-form">
+        <div class="attempt-row">
+          <select id="attempt-subject" required>
+            <option value="">Subject</option>
+            <option value="maths">Mathematics</option>
+            <option value="physics">Physics</option>
+            <option value="econ">Economics</option>
+          </select>
+          <select id="attempt-topic" disabled aria-label="PLC topic for this subject">
+            <option value="">Choose subject first</option>
+          </select>
+        </div>
+        <div class="attempt-row">
+          <input id="attempt-score" type="number" min="0" placeholder="Score" required>
+          <input id="attempt-max" type="number" min="1" placeholder="Max marks" required>
+        </div>
+        <div class="attempt-row">
+          <input id="attempt-time" type="number" min="1" placeholder="Time used (minutes)" required>
+          <select id="attempt-confidence" required>
+            <option value="">Confidence</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="attempt-row">
+          <input id="attempt-date" type="date" required>
+          <select id="attempt-grade">
+            <option value="">Grade (optional)</option>
+            <option value="A*">A*</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="U">U</option>
+          </select>
+        </div>
+        <div class="attempt-actions">
+          <button class="plc-action-btn primary" type="submit">Save attempt</button>
+          <button class="plc-action-btn" type="button" onclick="closeAttemptModal()">Close</button>
+        </div>
+      </form>
+      <div class="attempt-log-list" id="attempt-log-list"></div>
+    </div>
+  </div>
+
+</main>
+</div><!-- /page-wrap -->
+
+<footer>
+  <span>AJ · Edexcel A-Level 2026</span>
+  <span>Maths 6h · Physics 7h · Economics 6h · per week</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+  // ── FIREBASE CLOUD SYNC (optional) ──
+  // Console: https://console.firebase.google.com → Create project → Build → Authentication → Google → Enable.
+  // Build → Firestore → Create database (start in production, region of your choice).
+  // Project settings → Your apps → Web app → copy config into the object below.
+  // Authentication → Settings → Authorized domains: add your GitHub Pages host (e.g. username.github.io).
+  // Firestore → Rules: paste contents of firestore.rules from this folder, then Publish.
+  const REVISION_FIREBASE_CONFIG = {
+    apiKey: 'AIzaSyB5ZSyeNdyb4Ik8-Bx72mTO3zKvdntv7TI',
+    authDomain: 'revapp-b50fb.firebaseapp.com',
+    projectId: 'revapp-b50fb',
+    storageBucket: 'revapp-b50fb.firebasestorage.app',
+    messagingSenderId: '917040173751',
+    appId: '1:917040173751:web:515910c22fe2ac5aaa3332'
+  };
+
+  // ── TAB SWITCHING ──
+  function show(tabId, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
+  function openPaperLogTab() {
+    const btn = document.querySelector('.nav-btn[data-tab="papers"]');
+    if (btn) show('papers', btn);
+  }
+
+  // ── WEEK CARD CHECKBOXES ──
+  function initCheckboxes() {
+    const SVG = `<svg viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="1,4 4,7 9,1" stroke="var(--bg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    document.querySelectorAll('.week-card').forEach((card, cardIdx) => {
+      const subject = card.dataset.subject || 'gen';
+      const items = card.querySelectorAll('.topic-item');
+      items.forEach((item, i) => {
+        const text = item.textContent.trim();
+        const key = `tick-${subject}-${cardIdx}-${i}`;
+        const checked = localStorage.getItem(key) === '1';
+        const label = document.createElement('label');
+        label.className = 'topic-item' + (checked ? ' done' : '');
+        label.innerHTML = `<span class="tick">${SVG}</span><span class="tick-label">${text}</span>`;
+        label.addEventListener('click', () => {
+          const isDone = label.classList.toggle('done');
+          localStorage.setItem(key, isDone ? '1' : '0');
+          updateCard(card, subject);
+          updateGlobal();
+        });
+        item.replaceWith(label);
+      });
+      const bar = document.createElement('div');
+      bar.className = 'card-progress';
+      bar.innerHTML = `<div class="progress-track"><div class="progress-fill"></div></div><span class="progress-label">0%</span>`;
+      card.appendChild(bar);
+      updateCard(card, subject);
+    });
+    updateGlobal();
+  }
+
+  function updateCard(card, subject) {
+    const items = card.querySelectorAll('.topic-item');
+    const done = card.querySelectorAll('.topic-item.done').length;
+    const total = items.length;
+    const pct = total ? Math.round((done / total) * 100) : 0;
+    const fill = card.querySelector('.progress-fill');
+    const label = card.querySelector('.progress-label');
+    if (fill) fill.style.width = pct + '%';
+    if (label) label.textContent = pct + '%';
+  }
+
+  function updateGlobal() {
+    ['maths', 'physics', 'econ'].forEach(subj => {
+      const cards = document.querySelectorAll(`.card-${subj}`);
+      let total = 0, done = 0;
+      cards.forEach(card => {
+        total += card.querySelectorAll('.topic-item').length;
+        done += card.querySelectorAll('.topic-item.done').length;
+      });
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      const fill = document.getElementById(`gp-${subj}`);
+      const pctEl = document.getElementById(`gp-${subj}-pct`);
+      if (fill) fill.style.width = pct + '%';
+      if (pctEl) pctEl.textContent = pct + '%';
+    });
+    updateAcademicTracker();
+  }
+
+  // ── PLC RAG ──
+  function getPLCTopicText(row) {
+    const el = row.querySelector('.plc-topic-name');
+    return (el ? el.textContent : '').trim();
+  }
+  function getPLCKey(subj, topic) {
+    return `plc-${subj}-${encodeURIComponent(topic)}`;
+  }
+  function applyRAGEverywhere(subj, topic, rag) {
+    document.querySelectorAll(`.plc-row[data-plc="${subj}"]`).forEach(row => {
+      if (getPLCTopicText(row) === topic) applyRAG(row, rag);
+    });
+  }
+  function setPLCValue(subj, topic, rag) {
+    const key = getPLCKey(subj, topic);
+    if (rag) localStorage.setItem(key, rag);
+    else localStorage.removeItem(key);
+    applyRAGEverywhere(subj, topic, rag);
+    updatePLCCounts();
+  }
+  function mountSubjectPLC(subj) {
+    const mount = document.getElementById(`embed-plc-${subj}`);
+    if (!mount) return;
+    const src = document.querySelector(`#plc .plc-subject[data-plc-subject="${subj}"]`);
+    if (!src) return;
+    const clone = src.cloneNode(true);
+    clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id')); // prevent duplicate IDs
+    const sum = clone.querySelector('.plc-summary');
+    if (sum) sum.remove();
+    mount.innerHTML = '';
+    mount.appendChild(clone);
+  }
+  function mountAllSubjectPLCs() {
+    ['maths', 'physics', 'econ'].forEach(mountSubjectPLC);
+  }
+  function jumpToPLC(subj) {
+    const plcBtn = document.querySelector('.nav-btn[data-tab="plc"]');
+    if (plcBtn) show('plc', plcBtn);
+    const target = document.querySelector(`#plc .plc-subject[data-plc-subject="${subj}"]`);
+    if (target) target.scrollIntoView({ block: 'start' });
+  }
+  function initPLC() {
+    // migrate old keys (rowIdx-based) to stable topic-text keys using the canonical PLC list
+    document.querySelectorAll('#plc .plc-row').forEach((row, rowIdx) => {
+      const subj = row.dataset.plc;
+      const topic = getPLCTopicText(row);
+      const newKey = getPLCKey(subj, topic);
+      const oldKey = `plc-${subj}-${rowIdx}`;
+      const oldVal = localStorage.getItem(oldKey);
+      if (oldVal && !localStorage.getItem(newKey)) {
+        localStorage.setItem(newKey, oldVal);
+      }
+    });
+
+    document.querySelectorAll('.plc-row').forEach((row) => {
+      const subj = row.dataset.plc;
+      const topic = getPLCTopicText(row);
+      const key = getPLCKey(subj, topic);
+      const saved = localStorage.getItem(key); // 'r', 'a', 'g', or null
+      if (saved) applyRAG(row, saved);
+
+      row.querySelectorAll('.rag-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.stopPropagation();
+          const rag = btn.dataset.rag;
+          const current = row.dataset.current;
+          if (current === rag) {
+            // toggle off
+            setPLCValue(subj, topic, null);
+          } else {
+            setPLCValue(subj, topic, rag);
+          }
+        });
+      });
+    });
+    updatePLCCounts();
+  }
+
+  function applyRAG(row, rag) {
+    row.classList.remove('rag-r', 'rag-a', 'rag-g');
+    row.querySelectorAll('.rag-btn').forEach(b => b.classList.remove('active-r', 'active-a', 'active-g'));
+    if (rag) {
+      row.classList.add(`rag-${rag}`);
+      const btn = row.querySelector(`[data-rag="${rag}"]`);
+      if (btn) btn.classList.add(`active-${rag}`);
+      row.dataset.current = rag;
+    } else {
+      delete row.dataset.current;
+    }
+  }
+
+  function updatePLCCounts() {
+    ['maths', 'physics', 'econ'].forEach(subj => {
+      const rows = document.querySelectorAll(`#plc [data-plc="${subj}"]`);
+      let r = 0, a = 0, g = 0;
+      rows.forEach(row => {
+        if (row.dataset.current === 'r') r++;
+        else if (row.dataset.current === 'a') a++;
+        else if (row.dataset.current === 'g') g++;
+      });
+      const rEl = document.getElementById(`plc-${subj}-r`);
+      const aEl = document.getElementById(`plc-${subj}-a`);
+      const gEl = document.getElementById(`plc-${subj}-g`);
+      if (rEl) rEl.textContent = r;
+      if (aEl) aEl.textContent = a;
+      if (gEl) gEl.textContent = g;
+    });
+    updateAcademicTracker();
+  }
+
+  // ── ATTEMPT LOG + TRACKER ──
+  const ATTEMPT_LOG_KEY = 'attempt-log-v1';
+  const PAPER_LOG_KEY = 'paper-log-v1';
+  function getAttempts() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(ATTEMPT_LOG_KEY) || '[]');
+      let needSave = false;
+      const list = raw.map((a, i) => {
+        if (a.id) return a;
+        needSave = true;
+        return {
+          ...a,
+          id: `a-mig-${i}-${String(a.date || '')}-${String(a.topic || '').slice(0, 24)}-${Math.random().toString(36).slice(2, 9)}`
+        };
+      });
+      if (needSave) setAttempts(list);
+      return list;
+    } catch (_) {
+      return [];
+    }
+  }
+  function setAttempts(list) {
+    localStorage.setItem(ATTEMPT_LOG_KEY, JSON.stringify(list));
+  }
+  function getPapers() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(PAPER_LOG_KEY) || '[]');
+      let needSave = false;
+      const list = raw.map((p, i) => {
+        if (p.id) return p;
+        needSave = true;
+        return { ...p, id: `p-mig-${i}-${String(p.date || '')}-${Math.random().toString(36).slice(2, 9)}` };
+      });
+      if (needSave) setPapers(list);
+      return list;
+    } catch (_) {
+      return [];
+    }
+  }
+  function setPapers(list) {
+    localStorage.setItem(PAPER_LOG_KEY, JSON.stringify(list));
+  }
+  function escapeHtml(s) {
+    return String(s ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+  function deletePaper(id) {
+    if (!id) return;
+    setPapers(getPapers().filter(p => p.id !== id));
+    renderPaperLog();
+  }
+  function renderPaperLog() {
+    const box = document.getElementById('paper-log-list');
+    if (!box) return;
+    const papers = getPapers().sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (!papers.length) {
+      box.innerHTML = '<p style="font-size:12px;color:var(--muted);">No papers logged yet.</p>';
+      return;
+    }
+    box.innerHTML = papers.map(p => {
+      const pctStr = (Number(p.max) > 0 && p.score != null && p.score !== '' && !Number.isNaN(Number(p.score)))
+        ? ` · ${pct(Number(p.score), Number(p.max))}%`
+        : '';
+      const safeId = encodeURIComponent(p.id || '');
+      return `<div class="paper-log-item"><div class="paper-log-main"><strong style="color:var(--text);font-weight:500">${subjectLabel(normalizeSubjectKey(p.subject))}</strong> · ${escapeHtml(p.paperType)} · ${escapeHtml(p.code)}${pctStr}<br><span style="font-size:11px;color:var(--muted)">${escapeHtml(p.date)}</span><div class="paper-log-check"><strong>Mistake:</strong> ${escapeHtml(p.paperError)}<br><strong>Redo:</strong> ${escapeHtml(p.redoTopic)}<br><strong>Eval phrase:</strong> ${escapeHtml(p.evalPhrase)}</div></div><button type="button" class="attempt-log-del paper-log-del" data-delete-paper="${safeId}">Delete</button></div>`;
+    }).join('');
+  }
+  function initPaperLog() {
+    const form = document.getElementById('paper-form');
+    if (form && !form.dataset.bound) {
+      form.dataset.bound = '1';
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const scoreRaw = document.getElementById('paper-score').value;
+        const maxRaw = document.getElementById('paper-max').value;
+        const entry = {
+          id: `p-${Date.now()}`,
+          subject: document.getElementById('paper-subject').value,
+          paperType: document.getElementById('paper-type').value,
+          code: document.getElementById('paper-code').value.trim(),
+          date: document.getElementById('paper-date').value,
+          score: scoreRaw === '' ? null : Number(scoreRaw),
+          max: maxRaw === '' ? null : Number(maxRaw),
+          paperError: document.getElementById('paper-error').value.trim(),
+          redoTopic: document.getElementById('paper-redo').value.trim(),
+          evalPhrase: document.getElementById('paper-eval').value.trim()
+        };
+        const list = getPapers();
+        list.push(entry);
+        setPapers(list);
+        form.reset();
+        document.getElementById('paper-date').value = new Date().toISOString().slice(0, 10);
+        renderPaperLog();
+      });
+    }
+    const logBox = document.getElementById('paper-log-list');
+    if (logBox && !logBox.dataset.delBound) {
+      logBox.dataset.delBound = '1';
+      logBox.addEventListener('click', e => {
+        const btn = e.target.closest('[data-delete-paper]');
+        if (!btn) return;
+        e.preventDefault();
+        deletePaper(decodeURIComponent(btn.getAttribute('data-delete-paper') || ''));
+      });
+    }
+    const pd = document.getElementById('paper-date');
+    if (pd && !pd.value) pd.value = new Date().toISOString().slice(0, 10);
+    renderPaperLog();
+  }
+  function isAppStorageKey(key) {
+    if (!key) return false;
+    if (key === ATTEMPT_LOG_KEY || key === PAPER_LOG_KEY) return true;
+    if (key.startsWith('tick-')) return true;
+    if (key.startsWith('plc-')) return true;
+    if (key.startsWith('review-due-')) return true;
+    return false;
+  }
+  function buildRevisionBundle() {
+    const entries = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!isAppStorageKey(key)) continue;
+      entries[key] = localStorage.getItem(key);
+    }
+    return {
+      revisionPlanExport: 1,
+      exportedAt: new Date().toISOString(),
+      entries
+    };
+  }
+  function applyEntriesFromBundle(data, options) {
+    if (!data || data.revisionPlanExport !== 1 || !data.entries || typeof data.entries !== 'object') {
+      return { ok: false, error: 'invalid' };
+    }
+    if (!options || options.confirm !== false) {
+      if (!confirm('Replace this device’s progress (topic ticks, PLC ratings, attempt log, paper log, review dates) with this backup? You cannot undo this.')) {
+        return { ok: false, cancelled: true };
+      }
+    }
+    const toRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (isAppStorageKey(key)) toRemove.push(key);
+    }
+    toRemove.forEach(k => localStorage.removeItem(k));
+    Object.entries(data.entries).forEach(([k, v]) => {
+      if (!isAppStorageKey(k)) return;
+      if (v != null && v !== '') localStorage.setItem(k, String(v));
+    });
+    return { ok: true };
+  }
+  function exportRevisionData() {
+    const bundle = buildRevisionBundle();
+    const blob = new Blob([JSON.stringify(bundle)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `revision-plan-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+  function applyRevisionImport(data) {
+    const r = applyEntriesFromBundle(data, { confirm: true });
+    if (r.ok) location.reload();
+    else if (r.error === 'invalid') alert('That file is not a valid revision plan backup from this page.');
+  }
+  const FIRESTORE_SYNC_COLLECTION = 'revisionSync';
+  function revisionFirebaseConfigOk() {
+    const c = REVISION_FIREBASE_CONFIG;
+    if (!c || !c.apiKey || !c.projectId) return false;
+    if (String(c.apiKey).includes('REPLACE_ME')) return false;
+    if (String(c.projectId).includes('REPLACE_ME')) return false;
+    return true;
+  }
+  function initFirebaseSync() {
+    const statusEl = document.getElementById('firebase-sync-status');
+    const signInBtn = document.getElementById('firebase-sign-in');
+    const pushBtn = document.getElementById('firebase-push');
+    const pullBtn = document.getElementById('firebase-pull');
+    const outBtn = document.getElementById('firebase-sign-out');
+    if (!statusEl || !signInBtn || !pushBtn || !pullBtn || !outBtn) return;
+
+    if (typeof firebase === 'undefined') {
+      statusEl.textContent = 'Cloud sync: Firebase scripts failed to load (check network / ad blocker).';
+      return;
+    }
+    if (!revisionFirebaseConfigOk()) {
+      statusEl.textContent = 'Cloud sync: add your Firebase web config in REVISION_FIREBASE_CONFIG (see script comments).';
+      return;
+    }
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(REVISION_FIREBASE_CONFIG);
+    }
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    function uiSignedIn(user) {
+      signInBtn.hidden = true;
+      pushBtn.hidden = false;
+      pullBtn.hidden = false;
+      outBtn.hidden = false;
+      const label = user.email || user.uid.slice(0, 10) + '…';
+      statusEl.textContent = `Signed in · ${label}`;
+    }
+    function uiSignedOut() {
+      signInBtn.hidden = false;
+      pushBtn.hidden = true;
+      pullBtn.hidden = true;
+      outBtn.hidden = true;
+      statusEl.textContent = 'Not signed in — same Google account on phone & PC.';
+    }
+
+    signInBtn.addEventListener('click', () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithRedirect(provider);
+    });
+    outBtn.addEventListener('click', () => auth.signOut());
+
+    pushBtn.addEventListener('click', async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+      pushBtn.disabled = true;
+      try {
+        const bundle = buildRevisionBundle();
+        await db.collection(FIRESTORE_SYNC_COLLECTION).doc(user.uid).set({
+          payload: JSON.stringify(bundle),
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        statusEl.textContent = `Cloud saved · ${user.email || user.uid.slice(0, 8)} · ${new Date().toLocaleString()}`;
+      } catch (e) {
+        alert('Push failed: ' + (e.message || e.code || e));
+        console.error(e);
+      }
+      pushBtn.disabled = false;
+    });
+
+    pullBtn.addEventListener('click', async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+      if (!confirm('Replace this browser’s progress with the cloud copy? Unsaved changes here will be lost.')) return;
+      pullBtn.disabled = true;
+      try {
+        const snap = await db.collection(FIRESTORE_SYNC_COLLECTION).doc(user.uid).get();
+        if (!snap.exists) {
+          alert('No cloud backup yet — open the site on a device with your data and use Push to cloud.');
+          pullBtn.disabled = false;
+          return;
+        }
+        const raw = snap.data().payload;
+        if (!raw) {
+          alert('Cloud document was empty.');
+          pullBtn.disabled = false;
+          return;
+        }
+        let bundle;
+        try {
+          bundle = JSON.parse(raw);
+        } catch (_) {
+          alert('Cloud backup JSON could not be read.');
+          pullBtn.disabled = false;
+          return;
+        }
+        const r = applyEntriesFromBundle(bundle, { confirm: false });
+        if (!r.ok) {
+          alert('Cloud backup was not in the expected format.');
+          pullBtn.disabled = false;
+          return;
+        }
+        location.reload();
+      } catch (e) {
+        alert('Pull failed: ' + (e.message || e.code || e));
+        console.error(e);
+      }
+      pullBtn.disabled = false;
+    });
+
+    auth.getRedirectResult().catch(e => {
+      console.warn(e);
+      statusEl.textContent = 'Sign-in error: ' + (e.message || e.code || 'unknown');
+    });
+    auth.onAuthStateChanged(user => {
+      if (user) uiSignedIn(user);
+      else uiSignedOut();
+    });
+  }
+  function initSyncBackup() {
+    const btn = document.getElementById('import-backup-btn');
+    const input = document.getElementById('import-backup-input');
+    if (!btn || !input || input.dataset.bound) return;
+    input.dataset.bound = '1';
+    btn.addEventListener('click', () => input.click());
+    input.addEventListener('change', () => {
+      const f = input.files && input.files[0];
+      input.value = '';
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          applyRevisionImport(JSON.parse(reader.result));
+        } catch (_) {
+          alert('Could not read that file. Choose a .json file exported with Export on this page.');
+        }
+      };
+      reader.readAsText(f);
+    });
+  }
+  function getPLCTopicsForSubject(subj) {
+    if (!subj) return [];
+    const seen = new Set();
+    const topics = [];
+    document.querySelectorAll(`#plc .plc-row[data-plc="${subj}"]`).forEach(row => {
+      const el = row.querySelector('.plc-topic-name');
+      const t = (el ? el.textContent : '').trim();
+      if (t && !seen.has(t)) {
+        seen.add(t);
+        topics.push(t);
+      }
+    });
+    return topics;
+  }
+  function fillAttemptTopicSelect(subj) {
+    const sel = document.getElementById('attempt-topic');
+    if (!sel) return;
+    sel.innerHTML = '';
+    const ph = document.createElement('option');
+    ph.value = '';
+    ph.textContent = subj ? 'Choose PLC topic' : 'Choose subject first';
+    sel.appendChild(ph);
+    if (!subj) {
+      sel.disabled = true;
+      sel.required = false;
+      return;
+    }
+    sel.disabled = false;
+    sel.required = true;
+    getPLCTopicsForSubject(subj).forEach(topic => {
+      const o = document.createElement('option');
+      o.value = topic;
+      o.textContent = topic;
+      sel.appendChild(o);
+    });
+  }
+  function openAttemptModal() {
+    const modal = document.getElementById('attempt-modal');
+    if (modal) modal.classList.add('open');
+    const dateInput = document.getElementById('attempt-date');
+    if (dateInput && !dateInput.value) dateInput.value = new Date().toISOString().slice(0, 10);
+    const subjSel = document.getElementById('attempt-subject');
+    fillAttemptTopicSelect(subjSel ? subjSel.value : '');
+    renderAttemptList();
+  }
+  function closeAttemptModal() {
+    const modal = document.getElementById('attempt-modal');
+    if (modal) modal.classList.remove('open');
+  }
+  function pct(score, max) {
+    if (!max) return null;
+    return Math.round((score / max) * 100);
+  }
+  function subjectLabel(subj) {
+    return subj === 'maths' ? 'Mathematics' : subj === 'physics' ? 'Physics' : 'Economics';
+  }
+  function normalizeSubjectKey(raw) {
+    const s = String(raw || '').trim().toLowerCase();
+    if (s === 'maths' || s === 'mathematics' || s === 'math') return 'maths';
+    if (s === 'physics' || s === 'phy') return 'physics';
+    if (s === 'econ' || s === 'economics' || s === 'economy') return 'econ';
+    return s;
+  }
+  function getCompletion(subj) {
+    const cards = [...document.querySelectorAll(`.card-${subj}`)];
+    const total = cards.reduce((acc, c) => acc + c.querySelectorAll('.topic-item').length, 0);
+    const done = cards.reduce((acc, c) => acc + c.querySelectorAll('.topic-item.done').length, 0);
+    return total ? Math.round((done / total) * 100) : 0;
+  }
+  function getAttemptsBySubject(subj) {
+    return getAttempts().filter(a => normalizeSubjectKey(a.subject) === subj);
+  }
+  function getHoursLast7Days(subj) {
+    const now = Date.now();
+    const seven = 7 * 24 * 60 * 60 * 1000;
+    const mins = getAttemptsBySubject(subj)
+      .filter(a => now - new Date(a.date).getTime() <= seven)
+      .reduce((sum, a) => sum + Number(a.timeMin || 0), 0);
+    return (mins / 60).toFixed(1);
+  }
+  function getWeakTopics(subj) {
+    const items = getAttemptsBySubject(subj).filter(a => Number(a.max) > 0);
+    if (!items.length) {
+      const rag = [...document.querySelectorAll(`#plc [data-plc="${subj}"]`)]
+        .filter(r => r.dataset.current === 'r' || r.dataset.current === 'a')
+        .slice(0, 3)
+        .map(r => r.querySelector('.plc-topic-name')?.textContent?.trim())
+        .filter(Boolean);
+      return rag.length ? rag : ['No weak topics logged yet'];
+    }
+    const grouped = {};
+    items.forEach(a => {
+      const key = a.topic.trim();
+      if (!grouped[key]) grouped[key] = [];
+      grouped[key].push(pct(Number(a.score), Number(a.max)) || 0);
+    });
+    return Object.entries(grouped)
+      .map(([topic, vals]) => ({ topic, avg: vals.reduce((x, y) => x + y, 0) / vals.length }))
+      .sort((a, b) => a.avg - b.avg)
+      .slice(0, 3)
+      .map(x => `${x.topic} (${Math.round(x.avg)}%)`);
+  }
+  function getAvgTimedScore(subj) {
+    const vals = getAttemptsBySubject(subj)
+      .filter(a => Number(a.max) > 0)
+      .map(a => pct(Number(a.score), Number(a.max)))
+      .filter(v => v !== null);
+    if (!vals.length) return 'No data';
+    return `${Math.round(vals.reduce((a, b) => a + b, 0) / vals.length)}%`;
+  }
+  function topicTokens(s) {
+    return new Set(
+      (s || '')
+        .toLowerCase()
+        .split(/[^a-z0-9]+/)
+        .filter(w => w.length > 2)
+    );
+  }
+  function topicsRoughlyMatch(attemptTopic, plcTopic) {
+    const a = (attemptTopic || '').trim().toLowerCase().replace(/\s+/g, ' ');
+    const p = (plcTopic || '').trim().toLowerCase().replace(/\s+/g, ' ');
+    if (!a || !p) return false;
+    if (a.includes(p) || p.includes(a)) return true;
+    const ta = topicTokens(attemptTopic);
+    const tp = topicTokens(plcTopic);
+    if (!ta.size || !tp.size) return false;
+    for (const w of ta) {
+      if (w.length > 3 && tp.has(w)) return true;
+    }
+    let shared = 0;
+    for (const w of ta) {
+      if (tp.has(w)) shared++;
+    }
+    return shared >= 2;
+  }
+  function attemptsForPLCTopic(attempts, plcTopic) {
+    const matched = attempts.filter(a => topicsRoughlyMatch(a.topic, plcTopic));
+    return matched.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+  function parseLocalYMD(s) {
+    if (!s || typeof s !== 'string') return null;
+    const parts = s.split('-').map(Number);
+    if (parts.length !== 3 || parts.some(x => Number.isNaN(x))) return null;
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+  }
+  function startOfToday() {
+    const t = new Date();
+    return new Date(t.getFullYear(), t.getMonth(), t.getDate());
+  }
+  function getReviewDue(subj, topic) {
+    return localStorage.getItem(`review-due-${subj}-${encodeURIComponent(topic)}`);
+  }
+  function ensurePlcTopicCell(row) {
+    let name = row.querySelector(':scope > .plc-topic-name');
+    if (name) {
+      const cell = document.createElement('div');
+      cell.className = 'plc-topic-cell';
+      row.insertBefore(cell, name);
+      cell.appendChild(name);
+      return cell;
+    }
+    const inner = row.querySelector('.plc-topic-cell');
+    return inner || null;
+  }
+  function refreshPLCRowMeta() {
+    const attemptsAll = getAttempts();
+    document.querySelectorAll('.plc-row[data-plc]').forEach(row => {
+      const subj = row.dataset.plc;
+      const topic = getPLCTopicText(row);
+      const cell = ensurePlcTopicCell(row);
+      if (!cell || !subj || !topic) return;
+      let meta = cell.querySelector('.plc-row-meta');
+      if (!meta) {
+        meta = document.createElement('div');
+        meta.className = 'plc-row-meta';
+        cell.appendChild(meta);
+      }
+      const attempts = attemptsAll.filter(a => normalizeSubjectKey(a.subject) === subj);
+      const sorted = attemptsForPLCTopic(attempts, topic);
+      const latest = sorted[0];
+      let attemptStr = 'No matching attempts logged';
+      if (latest && Number(latest.max) > 0) {
+        const p = pct(Number(latest.score), Number(latest.max));
+        attemptStr = `Last attempt: ${p}% · ${latest.date}`;
+      } else if (latest) {
+        attemptStr = `Last attempt: ${latest.date} (add max marks in log for %)`;
+      }
+      const due = getReviewDue(subj, topic);
+      let dueClass = 'plc-meta-due';
+      let dueLabel = 'No review date';
+      if (due) {
+        const dueD = parseLocalYMD(due);
+        if (dueD) {
+          const today = startOfToday();
+          const diffDays = Math.round((dueD - today) / 86400000);
+          dueLabel = `Review due: ${due}`;
+          if (diffDays < 0) dueClass += ' overdue';
+          else if (diffDays <= 3) dueClass += ' soon';
+        } else dueLabel = `Review due: ${due}`;
+      }
+      const enc = encodeURIComponent(topic);
+      meta.innerHTML =
+        `<span class="plc-meta-line">${attemptStr}</span> · ` +
+        `<span class="${dueClass}">${dueLabel}</span> · ` +
+        `<button type="button" class="plc-spaced-btn" data-spaced-action="d3" data-subj="${subj}" data-topic-enc="${enc}">+3d</button>` +
+        `<button type="button" class="plc-spaced-btn" data-spaced-action="d7" data-subj="${subj}" data-topic-enc="${enc}">+7d</button>` +
+        `<button type="button" class="plc-spaced-btn" data-spaced-action="d14" data-subj="${subj}" data-topic-enc="${enc}">+14d</button>` +
+        `<button type="button" class="plc-spaced-btn" data-spaced-action="clr" data-subj="${subj}" data-topic-enc="${enc}">Clear</button>`;
+    });
+  }
+  let activeFilter = 'all';
+  let plcSearchText = '';
+  function applyPlcRowVisibility() {
+    const raw = plcSearchText.trim().toLowerCase();
+    const tokens = raw.split(/\s+/).filter(Boolean);
+    document.querySelectorAll('#plc .plc-row').forEach(row => {
+      const text = (getPLCTopicText(row) || '').toLowerCase();
+      const matchesSearch = !tokens.length || tokens.every(t => text.includes(t));
+      const cur = row.dataset.current || 'none';
+      let matchesFilter = true;
+      if (activeFilter === 'r') matchesFilter = cur === 'r';
+      else if (activeFilter === 'a') matchesFilter = cur === 'a';
+      else if (activeFilter === 'none') matchesFilter = !row.dataset.current;
+      else if (activeFilter === 'review') {
+        const subj = row.dataset.plc;
+        const topic = getPLCTopicText(row);
+        const due = getReviewDue(subj, topic);
+        if (!due) matchesFilter = false;
+        else {
+          const dueD = parseLocalYMD(due);
+          if (!dueD) matchesFilter = false;
+          else {
+            const today0 = startOfToday();
+            const limit = new Date(today0);
+            limit.setDate(limit.getDate() + 7);
+            limit.setHours(23, 59, 59, 999);
+            matchesFilter = dueD <= limit;
+          }
+        }
+      }
+      row.style.display = matchesSearch && matchesFilter ? '' : 'none';
+    });
+    document.querySelectorAll('#plc .plc-group').forEach(grp => {
+      const visible = [...grp.querySelectorAll('.plc-row')].some(r => r.style.display !== 'none');
+      grp.style.display = visible ? '' : 'none';
+    });
+    document.querySelectorAll('#plc .plc-subject').forEach(subj => {
+      const visible = [...subj.querySelectorAll('.plc-group')].some(g => g.style.display !== 'none');
+      subj.style.display = visible ? '' : 'none';
+    });
+  }
+  function setReviewDue(subj, topic, ymdOrNull) {
+    const k = `review-due-${subj}-${encodeURIComponent(topic)}`;
+    if (ymdOrNull) localStorage.setItem(k, ymdOrNull);
+    else localStorage.removeItem(k);
+    applyPlcRowVisibility();
+    refreshPLCRowMeta();
+  }
+  function initSpacedRecallOnce() {
+    if (document.body.dataset.spacedRecall) return;
+    document.body.dataset.spacedRecall = '1';
+    document.body.addEventListener('click', e => {
+      const btn = e.target.closest('[data-spaced-action]');
+      if (!btn) return;
+      e.preventDefault();
+      const subj = btn.dataset.subj;
+      const topic = decodeURIComponent(btn.dataset.topicEnc || '');
+      const action = btn.dataset.spacedAction;
+      const iso = d => {
+        const x = new Date(d);
+        return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`;
+      };
+      const today = new Date();
+      if (action === 'clr') {
+        setReviewDue(subj, topic, null);
+      } else if (action === 'd3' || action === 'd7' || action === 'd14') {
+        const add = action === 'd3' ? 3 : action === 'd7' ? 7 : 14;
+        const t = new Date(today);
+        t.setDate(t.getDate() + add);
+        setReviewDue(subj, topic, iso(t));
+      }
+    });
+  }
+  function initPlcSearchAndFilters() {
+    const plc = document.getElementById('plc');
+    if (!plc || plc.dataset.filterInit) return;
+    plc.dataset.filterInit = '1';
+    const search = document.getElementById('plc-search');
+    if (search && !search.dataset.bound) {
+      search.dataset.bound = '1';
+      search.addEventListener('input', () => {
+        plcSearchText = search.value;
+        applyPlcRowVisibility();
+      });
+    }
+    plc.querySelectorAll('[data-plc-filter]').forEach(btn => {
+      btn.addEventListener('click', () => filterPLC(btn.dataset.plcFilter, btn));
+    });
+  }
+  function getPriorityItems(subj) {
+    const rows = [...document.querySelectorAll(`#plc [data-plc="${subj}"]`)];
+    const attempts = getAttemptsBySubject(subj);
+    return rows.map(row => {
+      const topic = row.querySelector('.plc-topic-name')?.textContent?.trim() || 'Untitled topic';
+      const rag = row.dataset.current || 'none';
+      const sorted = attemptsForPLCTopic(attempts, topic);
+      const latest = sorted[0];
+      const scorePct = latest ? pct(Number(latest.score), Number(latest.max)) : null;
+      let score = 0;
+      if (rag === 'r') score += 40;
+      else if (rag === 'a') score += 25;
+      else if (rag === 'none') score += 10;
+      if (scorePct === null) score += 20;
+      else if (scorePct < 60) score += 25;
+      else if (scorePct < 75) score += 10;
+      return { subj, topic, rag, scorePct, score };
+    }).sort((a, b) => b.score - a.score);
+  }
+  function pickBlendedPriorities(maxTotal, maxPerSubject) {
+    const all = ['maths', 'physics', 'econ']
+      .flatMap(getPriorityItems)
+      .sort((a, b) => b.score - a.score);
+    const key = (x) => `${x.subj}\0${x.topic}`;
+    const picked = new Set();
+    const counts = { maths: 0, physics: 0, econ: 0 };
+    const out = [];
+    for (const item of all) {
+      if (out.length >= maxTotal) break;
+      const k = key(item);
+      if (picked.has(k)) continue;
+      if (counts[item.subj] < maxPerSubject) {
+        out.push(item);
+        picked.add(k);
+        counts[item.subj]++;
+      }
+    }
+    for (const item of all) {
+      if (out.length >= maxTotal) break;
+      const k = key(item);
+      if (!picked.has(k)) {
+        out.push(item);
+        picked.add(k);
+      }
+    }
+    return out;
+  }
+  function deleteAttempt(id) {
+    if (!id) return;
+    const list = getAttempts().filter(a => a.id !== id);
+    setAttempts(list);
+    renderAttemptList();
+    refreshPLCRowMeta();
+    updateAcademicTracker();
+  }
+  function renderAttemptList() {
+    const box = document.getElementById('attempt-log-list');
+    if (!box) return;
+    const attempts = getAttempts().sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 8);
+    if (!attempts.length) {
+      box.innerHTML = '<div class="attempt-log-item"><span class="attempt-log-item-text">No attempts logged yet.</span></div>';
+      return;
+    }
+    box.innerHTML = attempts.map(a => {
+      const p = pct(Number(a.score), Number(a.max));
+      const g = a.grade ? ` · grade ${a.grade}` : '';
+      const safeId = encodeURIComponent(a.id || '');
+      return `<div class="attempt-log-item"><span class="attempt-log-item-text">${a.date} · ${subjectLabel(normalizeSubjectKey(a.subject))} · ${a.topic} · ${a.score}/${a.max} (${p}%)${g} · ${a.timeMin}m · ${a.confidence}</span><button type="button" class="attempt-log-del" data-delete-attempt="${safeId}" title="Remove this attempt">Delete</button></div>`;
+    }).join('');
+  }
+  function updateAcademicTracker() {
+    ['maths', 'physics', 'econ'].forEach(subj => {
+      const completionEl = document.getElementById(`trk-${subj}-completion`);
+      const scoreEl = document.getElementById(`trk-${subj}-score`);
+      const hoursEl = document.getElementById(`trk-${subj}-hours`);
+      const weakEl = document.getElementById(`trk-${subj}-weak`);
+      if (completionEl) completionEl.textContent = `${getCompletion(subj)}%`;
+      if (scoreEl) scoreEl.textContent = getAvgTimedScore(subj);
+      if (hoursEl) hoursEl.textContent = `${getHoursLast7Days(subj)}h`;
+      if (weakEl) weakEl.innerHTML = getWeakTopics(subj).map(t => `<li>${t}</li>`).join('');
+    });
+    const top = pickBlendedPriorities(6, 2);
+    const list = document.getElementById('tracker-priority-list');
+    if (list) {
+      list.innerHTML = top.length
+        ? top.map(x => `<li style="font-size:12px;color:var(--muted);margin-bottom:5px;">${subjectLabel(x.subj)} · ${x.topic} — ${x.rag.toUpperCase()}${x.scorePct !== null ? ` · ${x.scorePct}% latest` : ' · no matching attempt topic'}</li>`).join('')
+        : '<li style="font-size:12px;color:var(--muted);">No priorities yet.</li>';
+    }
+  }
+  function initAttemptForm() {
+    const subjSel = document.getElementById('attempt-subject');
+    if (subjSel && !subjSel.dataset.plcTopicsBound) {
+      subjSel.dataset.plcTopicsBound = '1';
+      subjSel.addEventListener('change', () => fillAttemptTopicSelect(subjSel.value));
+    }
+    fillAttemptTopicSelect(subjSel ? subjSel.value : '');
+    const logBox = document.getElementById('attempt-log-list');
+    if (logBox && !logBox.dataset.deleteBound) {
+      logBox.dataset.deleteBound = '1';
+      logBox.addEventListener('click', e => {
+        const btn = e.target.closest('[data-delete-attempt]');
+        if (!btn) return;
+        e.preventDefault();
+        const id = decodeURIComponent(btn.getAttribute('data-delete-attempt') || '');
+        deleteAttempt(id);
+      });
+    }
+    const form = document.getElementById('attempt-form');
+    if (!form) return;
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const subj = document.getElementById('attempt-subject').value;
+      const topicSel = document.getElementById('attempt-topic');
+      const topic = (topicSel && topicSel.value ? topicSel.value : '').trim();
+      if (!subj || !topic) return;
+      const attempt = {
+        id: `a-${Date.now()}`,
+        subject: subj,
+        topic,
+        score: Number(document.getElementById('attempt-score').value),
+        max: Number(document.getElementById('attempt-max').value),
+        timeMin: Number(document.getElementById('attempt-time').value),
+        confidence: document.getElementById('attempt-confidence').value,
+        date: document.getElementById('attempt-date').value,
+        grade: document.getElementById('attempt-grade').value || ''
+      };
+      const attempts = getAttempts();
+      attempts.push(attempt);
+      setAttempts(attempts);
+      form.reset();
+      document.getElementById('attempt-date').value = new Date().toISOString().slice(0, 10);
+      fillAttemptTopicSelect('');
+      renderAttemptList();
+      refreshPLCRowMeta();
+      updateAcademicTracker();
+    });
+  }
+
+  // ── FILTER / SEARCH PLC ──
+  function filterPLC(filter, btn) {
+    activeFilter = filter;
+    document.querySelectorAll('#plc [data-plc-filter]').forEach(b => b.classList.toggle('active', b === btn));
+    applyPlcRowVisibility();
+  }
+
+  // ── COPY WEAK AREAS ──
+  function copyWeakAreas() {
+    const lines = ['My weak areas (Red & Amber) from the PLC:\n'];
+    ['maths', 'physics', 'econ'].forEach(subj => {
+      const rows = [...document.querySelectorAll(`#plc [data-plc="${subj}"]`)]
+        .filter(r => r.dataset.current === 'r' || r.dataset.current === 'a');
+      if (!rows.length) return;
+      const label = subj === 'maths' ? 'Mathematics' : subj === 'physics' ? 'Physics' : 'Economics';
+      lines.push(`${label}:`);
+      rows.forEach(r => {
+        const rag = r.dataset.current.toUpperCase();
+        const topic = r.querySelector('.plc-topic-name').textContent.trim();
+        lines.push(`  [${rag}] ${topic}`);
+      });
+      lines.push('');
+    });
+    if (lines.length === 1) {
+      lines.push('No red or amber topics marked yet.');
+    }
+    navigator.clipboard.writeText(lines.join('\n')).then(() => {
+      const el = document.getElementById('copy-confirm');
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2500);
+    });
+  }
+
+  // ── RESET PLC ──
+  function resetPLC() {
+    if (!confirm('Reset all RAG ratings? This cannot be undone.')) return;
+    document.querySelectorAll('#plc .plc-row').forEach((row, rowIdx) => {
+      const subj = row.dataset.plc;
+      const topic = getPLCTopicText(row);
+      localStorage.removeItem(getPLCKey(subj, topic));
+      localStorage.removeItem(`plc-${subj}-${rowIdx}`); // legacy
+    });
+    document.querySelectorAll('.plc-row').forEach(row => applyRAG(row, null));
+    updatePLCCounts();
+    const allBtn = document.querySelector('#plc [data-plc-filter="all"]');
+    if (allBtn) filterPLC('all', allBtn);
+    else applyPlcRowVisibility();
+  }
+
+  // ── COUNTDOWN ──
+  function updateCountdown() {
+    const target = new Date('2026-06-21T23:59:59');
+    const now = new Date();
+    const diff = target - now;
+    const totalDays = Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+    const weeks = Math.floor(totalDays / 7);
+    const remainderDays = totalDays % 7;
+    const weeksEl = document.getElementById('cd-weeks-num');
+    const daysEl = document.getElementById('cd-days-num');
+    if (weeksEl) weeksEl.textContent = weeks;
+    if (daysEl) daysEl.textContent = remainderDays;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initCheckboxes();
+    mountAllSubjectPLCs();
+    initPLC();
+    initPlcSearchAndFilters();
+    initSpacedRecallOnce();
+    initPaperLog();
+    initAttemptForm();
+    initSyncBackup();
+    initFirebaseSync();
+    refreshPLCRowMeta();
+    applyPlcRowVisibility();
+    updateAcademicTracker();
+  });
+</script>
+</body>
+</html>
