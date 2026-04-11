@@ -14,8 +14,8 @@
     --surface2: #1e1e1e;
     --border: rgba(255,255,255,0.07);
     --border2: rgba(255,255,255,0.12);
-    --text: #e8e4dc;
-    --muted: #7a7570;
+    --text: #f4f1eb;
+    --muted: #949088;
     --maths: #c8a96e;
     --maths-bg: rgba(200,169,110,0.08);
     --maths-border: rgba(200,169,110,0.2);
@@ -29,6 +29,14 @@
     --p2: #6eb8c8;
     --p3: #c86e8a;
     --p4: #9ec86e;
+    /* nav tab accents (harmonise with subject + stat colours) */
+    --tab-overview: #c9b896;
+    --tab-schedule: #7aa8c4;
+    --tab-week: #b4a060;
+    --tab-revision: #c88a9e;
+    --tab-plc: #7eb899;
+    --tab-papers: #9b8ec9;
+    --tab-resources: #c9a86e;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -135,9 +143,26 @@
   }
   .nav-btn:hover { color: var(--text); }
   .nav-btn.active { color: var(--text); border-bottom-color: var(--text); font-weight: 500; }
+  .nav-btn[data-tab="overview"]:hover { color: var(--tab-overview); }
+  .nav-btn[data-tab="overview"].active { border-bottom-color: var(--tab-overview); color: var(--tab-overview); }
+  .nav-btn[data-tab="maths"]:hover { color: var(--maths); }
   .nav-btn[data-tab="maths"].active { border-bottom-color: var(--maths); color: var(--maths); }
+  .nav-btn[data-tab="physics"]:hover { color: var(--physics); }
   .nav-btn[data-tab="physics"].active { border-bottom-color: var(--physics); color: var(--physics); }
+  .nav-btn[data-tab="econ"]:hover { color: var(--econ); }
   .nav-btn[data-tab="econ"].active { border-bottom-color: var(--econ); color: var(--econ); }
+  .nav-btn[data-tab="schedule"]:hover { color: var(--tab-schedule); }
+  .nav-btn[data-tab="schedule"].active { border-bottom-color: var(--tab-schedule); color: var(--tab-schedule); }
+  .nav-btn[data-tab="week"]:hover { color: var(--tab-week); }
+  .nav-btn[data-tab="week"].active { border-bottom-color: var(--tab-week); color: var(--tab-week); }
+  .nav-btn[data-tab="revision-hours"]:hover { color: var(--tab-revision); }
+  .nav-btn[data-tab="revision-hours"].active { border-bottom-color: var(--tab-revision); color: var(--tab-revision); }
+  .nav-btn[data-tab="plc"]:hover { color: var(--tab-plc); }
+  .nav-btn[data-tab="plc"].active { border-bottom-color: var(--tab-plc); color: var(--tab-plc); }
+  .nav-btn[data-tab="papers"]:hover { color: var(--tab-papers); }
+  .nav-btn[data-tab="papers"].active { border-bottom-color: var(--tab-papers); color: var(--tab-papers); }
+  .nav-btn[data-tab="resources"]:hover { color: var(--tab-resources); }
+  .nav-btn[data-tab="resources"].active { border-bottom-color: var(--tab-resources); color: var(--tab-resources); }
 
   /* ── PAGE CENTERING ── */
   .page-wrap {
@@ -430,6 +455,88 @@
     gap: 6px;
     margin-top: 8px;
   }
+  .timetable-week-editor { margin-bottom: 2rem; }
+  .timetable-week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .timetable-day {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 14px;
+  }
+  .timetable-day .schedule-day { margin-bottom: 8px; }
+  .timetable-field-label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 10px 0 4px;
+  }
+  .timetable-field-label:first-of-type { margin-top: 0; }
+  .timetable-textarea {
+    width: 100%;
+    min-height: 72px;
+    resize: vertical;
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.45;
+  }
+  .timetable-textarea::placeholder { color: var(--muted); opacity: 0.75; }
+  .revision-hours-panel {
+    margin-bottom: 2rem;
+    padding-bottom: 0;
+  }
+  .revision-hours-summary {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-family: 'DM Mono', monospace;
+    white-space: normal;
+    line-height: 1.5;
+  }
+  .revision-hours-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: end;
+  }
+  .revision-hours-form .rh-full { grid-column: 1 / -1; }
+  .revision-hours-form input,
+  .revision-hours-form select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 12px;
+    color: var(--text);
+  }
+  .revision-hours-list { display: flex; flex-direction: column; gap: 6px; }
+  .revision-hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 8px 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .revision-hours-item strong { color: var(--text); font-weight: 500; }
   .session-pill {
     display: flex;
     align-items: center;
@@ -822,6 +929,7 @@
     .progress-track { height: 4px; }
 
     .paper-form-grid { grid-template-columns: 1fr; }
+    .revision-hours-form { grid-template-columns: 1fr; }
 
     /* overview grid: single column */
     .overview-phases { grid-template-columns: 1fr; }
@@ -1071,6 +1179,8 @@
   <button class="nav-btn" data-tab="physics" onclick="show('physics',this)">Physics</button>
   <button class="nav-btn" data-tab="econ" onclick="show('econ',this)">Economics</button>
   <button class="nav-btn" data-tab="schedule" onclick="show('schedule',this)">Schedule</button>
+  <button class="nav-btn" data-tab="week" onclick="show('week',this)">My week</button>
+  <button class="nav-btn" data-tab="revision-hours" onclick="show('revision-hours',this)">Revision hours</button>
   <button class="nav-btn" data-tab="plc" onclick="show('plc',this)">PLC</button>
   <button class="nav-btn" data-tab="papers" onclick="show('papers',this)">Paper log</button>
   <button class="nav-btn" data-tab="resources" onclick="show('resources',this)">Resources</button>
@@ -1084,7 +1194,7 @@
     <div class="stats-row">
       <div class="stat-card"><div class="stat-val c-p1">10</div><div class="stat-label">weeks total</div></div>
       <div class="stat-card"><div class="stat-val c-p2">19</div><div class="stat-label">hrs/week</div></div>
-      <div class="stat-card"><div class="stat-val c-p3">7·6·6</div><div class="stat-label">phys · maths · econ</div></div>
+      <div class="stat-card"><div class="stat-val c-p3">7h 6h 6h</div><div class="stat-label">phys · maths · econ</div></div>
       <div class="stat-card"><div class="stat-val c-p4">190</div><div class="stat-label">hrs total</div></div>
     </div>
 
@@ -1581,7 +1691,12 @@
   <div class="section" id="schedule">
 
     <div class="info-box" style="margin-bottom:1.5rem;">
-      <strong>Physics 7 hrs · Maths 6 hrs · Economics 6 hrs</strong> per week (19 total). Extra physics time is front-loaded mid-week; weekends carry two longer blocks. Same 9–11 pm peak for evening sessions where possible. Adjust when term restarts and school compresses your evenings.
+      <strong>Physics 7 hrs · Maths 6 hrs · Economics 6 hrs</strong> per week (19 total). Extra physics time is front-loaded mid-week; weekends carry two longer blocks. Same 9–11 pm peak for evening sessions where possible. Adjust when term restarts and school compresses your evenings.<br><br>
+      Your <strong>personal timetable</strong> (Mon–Fri) is on <strong>My week</strong>; logged <strong>revision hours</strong> are on the <strong>Revision hours</strong> tab. Both save in this browser and are included in <strong>Push to cloud</strong> / <strong>Export</strong>.
+    </div>
+
+    <div class="phase-label" style="margin-bottom:0.75rem">
+      <span class="phase-tag" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border2)">Default weekly plan (19h)</span>
     </div>
 
     <div class="schedule-grid">
@@ -1679,6 +1794,100 @@
       From week 7, replace content sessions with timed papers across all subjects.<br>
       Your cycling commute is dead time — use it for audio recall or formula recitation, not screens.<br>
       9–11 pm peak = hard thinking only. No passive re-reading in that window.
+    </div>
+  </div>
+
+  <!-- ══ MY WEEK (timetable) ══ -->
+  <div class="section" id="week">
+    <div class="info-box" style="margin-bottom:1.5rem;">
+      Editable <strong>Mon–Fri timetable</strong> (free periods + evening from 6pm). Log time spent revising on the <strong>Revision hours</strong> tab. Saves in this browser and is included when you <strong>Push to cloud</strong> / <strong>Export</strong>.
+    </div>
+
+    <div class="timetable-week-editor" id="timetable-week-editor">
+      <div class="phase-label" style="margin-bottom:0.5rem">
+        <span class="phase-tag" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border2)">My timetable · Mon–Fri</span>
+      </div>
+      <p class="phase-desc" style="margin-bottom:4px">Edit your <strong>free periods</strong> at school and <strong>at home from 6pm</strong>. Saved automatically as you type.</p>
+      <div class="timetable-week-grid">
+        <div class="timetable-day" data-day="mon">
+          <div class="schedule-day">Monday</div>
+          <label class="timetable-field-label">Free periods</label>
+          <textarea class="timetable-textarea" data-tt-field="free" rows="3" placeholder="e.g. P2, P4 — flashcards, PMT questions"></textarea>
+          <label class="timetable-field-label">At home (6pm onwards)</label>
+          <textarea class="timetable-textarea" data-tt-field="home" rows="3" placeholder="Evening revision plan"></textarea>
+        </div>
+        <div class="timetable-day" data-day="tue">
+          <div class="schedule-day">Tuesday</div>
+          <label class="timetable-field-label">Free periods</label>
+          <textarea class="timetable-textarea" data-tt-field="free" rows="3" placeholder=""></textarea>
+          <label class="timetable-field-label">At home (6pm onwards)</label>
+          <textarea class="timetable-textarea" data-tt-field="home" rows="3" placeholder=""></textarea>
+        </div>
+        <div class="timetable-day" data-day="wed">
+          <div class="schedule-day">Wednesday</div>
+          <label class="timetable-field-label">Free periods</label>
+          <textarea class="timetable-textarea" data-tt-field="free" rows="3" placeholder=""></textarea>
+          <label class="timetable-field-label">At home (6pm onwards)</label>
+          <textarea class="timetable-textarea" data-tt-field="home" rows="3" placeholder=""></textarea>
+        </div>
+        <div class="timetable-day" data-day="thu">
+          <div class="schedule-day">Thursday</div>
+          <label class="timetable-field-label">Free periods</label>
+          <textarea class="timetable-textarea" data-tt-field="free" rows="3" placeholder=""></textarea>
+          <label class="timetable-field-label">At home (6pm onwards)</label>
+          <textarea class="timetable-textarea" data-tt-field="home" rows="3" placeholder=""></textarea>
+        </div>
+        <div class="timetable-day" data-day="fri">
+          <div class="schedule-day">Friday</div>
+          <label class="timetable-field-label">Free periods</label>
+          <textarea class="timetable-textarea" data-tt-field="free" rows="3" placeholder=""></textarea>
+          <label class="timetable-field-label">At home (6pm onwards)</label>
+          <textarea class="timetable-textarea" data-tt-field="home" rows="3" placeholder=""></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ REVISION HOURS LOG ══ -->
+  <div class="section" id="revision-hours">
+    <div class="info-box" style="margin-bottom:1.5rem;">
+      Log every revision session here. Totals use <strong>this calendar month</strong>, a <strong>rolling last 30 days</strong>, and <strong>all time</strong>. Included in <strong>Push to cloud</strong> / <strong>Export</strong>.
+    </div>
+
+    <div class="revision-hours-panel">
+      <div class="phase-label" style="margin-bottom:0.5rem">
+        <span class="phase-tag" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border2)">Revision hours log</span>
+      </div>
+      <p class="phase-desc" style="margin-bottom:10px">Log real time spent revising. The list keeps your full history (most recent first).</p>
+      <div class="revision-hours-summary" id="revision-hours-summary">This month: 0.00h · Last 30 days: 0.00h · All time: 0.00h</div>
+      <form class="revision-hours-form" id="revision-hours-form">
+        <div>
+          <label class="timetable-field-label" style="margin-top:0">Date</label>
+          <input type="date" id="revision-hours-date" required>
+        </div>
+        <div>
+          <label class="timetable-field-label" style="margin-top:0">Hours</label>
+          <input type="number" id="revision-hours-amount" min="0.25" max="24" step="0.25" placeholder="e.g. 2" required>
+        </div>
+        <div>
+          <label class="timetable-field-label" style="margin-top:0">Subject (optional)</label>
+          <select id="revision-hours-subject">
+            <option value="">—</option>
+            <option value="maths">Maths</option>
+            <option value="physics">Physics</option>
+            <option value="econ">Economics</option>
+            <option value="mixed">Mixed / other</option>
+          </select>
+        </div>
+        <div class="rh-full">
+          <label class="timetable-field-label" style="margin-top:0">Note (optional)</label>
+          <input type="text" id="revision-hours-note" placeholder="e.g. Past paper 2, timed">
+        </div>
+        <div class="rh-full">
+          <button type="submit" class="plc-action-btn primary">Add hours</button>
+        </div>
+      </form>
+      <div class="revision-hours-list" id="revision-hours-list"></div>
     </div>
   </div>
 
@@ -2584,13 +2793,166 @@
     if (pd && !pd.value) pd.value = new Date().toISOString().slice(0, 10);
     renderPaperLog();
   }
+  const TIMETABLE_STORAGE_KEY = 'timetable-v1';
+  const REVISION_HOURS_LOG_KEY = 'revision-hours-log-v1';
   function isAppStorageKey(key) {
     if (!key) return false;
     if (key === ATTEMPT_LOG_KEY || key === PAPER_LOG_KEY) return true;
+    if (key === TIMETABLE_STORAGE_KEY || key === REVISION_HOURS_LOG_KEY) return true;
     if (key.startsWith('tick-')) return true;
     if (key.startsWith('plc-')) return true;
     if (key.startsWith('review-due-')) return true;
     return false;
+  }
+  function getTimetableData() {
+    try {
+      const raw = localStorage.getItem(TIMETABLE_STORAGE_KEY);
+      const t = raw ? JSON.parse(raw) : {};
+      return typeof t === 'object' && t !== null ? t : {};
+    } catch (_) {
+      return {};
+    }
+  }
+  function saveTimetableFromDOM() {
+    const data = {};
+    document.querySelectorAll('.timetable-day').forEach(el => {
+      const d = el.dataset.day;
+      if (!d) return;
+      const free = el.querySelector('[data-tt-field="free"]');
+      const home = el.querySelector('[data-tt-field="home"]');
+      data[d] = {
+        free: free ? free.value : '',
+        home: home ? home.value : ''
+      };
+    });
+    localStorage.setItem(TIMETABLE_STORAGE_KEY, JSON.stringify(data));
+  }
+  let timetableSaveTimer;
+  function initTimetableEditor() {
+    const root = document.getElementById('timetable-week-editor');
+    if (!root) return;
+    const data = getTimetableData();
+    ['mon', 'tue', 'wed', 'thu', 'fri'].forEach(d => {
+      if (!data[d]) data[d] = { free: '', home: '' };
+    });
+    document.querySelectorAll('.timetable-day').forEach(el => {
+      const d = el.dataset.day;
+      if (!d || !data[d]) return;
+      const free = el.querySelector('[data-tt-field="free"]');
+      const home = el.querySelector('[data-tt-field="home"]');
+      if (free) free.value = data[d].free || '';
+      if (home) home.value = data[d].home || '';
+    });
+    root.addEventListener('input', () => {
+      clearTimeout(timetableSaveTimer);
+      timetableSaveTimer = setTimeout(saveTimetableFromDOM, 450);
+    });
+  }
+  function getRevisionHoursList() {
+    try {
+      const raw = localStorage.getItem(REVISION_HOURS_LOG_KEY);
+      const a = raw ? JSON.parse(raw) : [];
+      return Array.isArray(a) ? a : [];
+    } catch (_) {
+      return [];
+    }
+  }
+  function setRevisionHoursList(arr) {
+    localStorage.setItem(REVISION_HOURS_LOG_KEY, JSON.stringify(arr));
+  }
+  function revisionHoursSubjectLabel(v) {
+    if (v === 'maths') return 'Maths';
+    if (v === 'physics') return 'Physics';
+    if (v === 'econ') return 'Economics';
+    if (v === 'mixed') return 'Mixed';
+    return '';
+  }
+  function updateRevisionHoursSummary() {
+    const el = document.getElementById('revision-hours-summary');
+    if (!el) return;
+    const arr = getRevisionHoursList();
+    const now = new Date();
+    const todayNoon = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0).getTime();
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1, 12, 0, 0).getTime();
+    const d30 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0);
+    d30.setDate(d30.getDate() - 30);
+    const thirtyStart = d30.getTime();
+    let month = 0;
+    let thirty = 0;
+    let total = 0;
+    arr.forEach(x => {
+      const h = Number(x.hours);
+      if (Number.isNaN(h) || h <= 0) return;
+      total += h;
+      const t = new Date(String(x.date) + 'T12:00:00').getTime();
+      if (Number.isNaN(t)) return;
+      if (t <= todayNoon) {
+        if (t >= thirtyStart) thirty += h;
+        if (t >= monthStart) month += h;
+      }
+    });
+    el.textContent = `This month: ${month.toFixed(2)}h · Last 30 days: ${thirty.toFixed(2)}h · All time: ${total.toFixed(2)}h`;
+  }
+  function renderRevisionHoursList() {
+    const box = document.getElementById('revision-hours-list');
+    if (!box) return;
+    const arr = getRevisionHoursList().sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (!arr.length) {
+      box.innerHTML = '<p style="font-size:12px;color:var(--muted)">No hours logged yet.</p>';
+      return;
+    }
+    box.innerHTML = arr.map(x => {
+      const sub = revisionHoursSubjectLabel(x.subject);
+      const note = x.note ? ` · ${escapeHtml(x.note)}` : '';
+      const sid = encodeURIComponent(x.id || '');
+      return `<div class="revision-hours-item"><span><strong>${escapeHtml(String(x.date))}</strong> · ${Number(x.hours).toFixed(2)}h${sub ? ` · ${sub}` : ''}${note}</span><button type="button" class="attempt-log-del" data-del-revision-hours="${sid}">Delete</button></div>`;
+    }).join('');
+  }
+  function deleteRevisionHour(id) {
+    if (!id) return;
+    const arr = getRevisionHoursList().filter(x => x.id !== id);
+    setRevisionHoursList(arr);
+    updateRevisionHoursSummary();
+    renderRevisionHoursList();
+  }
+  function initRevisionHoursLog() {
+    const form = document.getElementById('revision-hours-form');
+    const dateIn = document.getElementById('revision-hours-date');
+    const list = document.getElementById('revision-hours-list');
+    if (dateIn && !dateIn.value) dateIn.value = new Date().toISOString().slice(0, 10);
+    if (form && !form.dataset.bound) {
+      form.dataset.bound = '1';
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const hours = Number(document.getElementById('revision-hours-amount').value);
+        if (Number.isNaN(hours) || hours <= 0) return;
+        const entry = {
+          id: `rh-${Date.now()}`,
+          date: document.getElementById('revision-hours-date').value,
+          hours,
+          subject: document.getElementById('revision-hours-subject').value || '',
+          note: document.getElementById('revision-hours-note').value.trim()
+        };
+        const arr = getRevisionHoursList();
+        arr.push(entry);
+        setRevisionHoursList(arr);
+        form.reset();
+        if (dateIn) dateIn.value = new Date().toISOString().slice(0, 10);
+        updateRevisionHoursSummary();
+        renderRevisionHoursList();
+      });
+    }
+    if (list && !list.dataset.bound) {
+      list.dataset.bound = '1';
+      list.addEventListener('click', e => {
+        const btn = e.target.closest('[data-del-revision-hours]');
+        if (!btn) return;
+        e.preventDefault();
+        deleteRevisionHour(decodeURIComponent(btn.getAttribute('data-del-revision-hours') || ''));
+      });
+    }
+    updateRevisionHoursSummary();
+    renderRevisionHoursList();
   }
   function buildRevisionBundle() {
     const entries = {};
@@ -3312,6 +3674,8 @@
     initPlcSearchAndFilters();
     initSpacedRecallOnce();
     initPaperLog();
+    initTimetableEditor();
+    initRevisionHoursLog();
     initAttemptForm();
     initSyncBackup();
     initFirebaseSync();
